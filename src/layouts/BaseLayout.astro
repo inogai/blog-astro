@@ -1,7 +1,7 @@
 ---
 import BlogFooter from '@/components/BlogFooter.astro'
 import Breadcrumb from '@/components/Breadcrumb.astro'
-import NavBar from '@/components/NavBar.astro'
+import HomeLayout from '@/layouts/HomeLayout.astro'
 
 import '@/styles/global.css'
 
@@ -43,21 +43,10 @@ const breadcrumbItems = getBreadcrumbItems(Astro.url.pathname).map((item) => {
 })
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | inogai - Alex Chen</title>
-  </head>
-  <body>
-    <div class="flex min-h-screen flex-col">
-      <NavBar />
-      <main class="container mx-auto flex-1 px-4 py-8">
-        <Breadcrumb items={breadcrumbItems} />
-        <slot />
-      </main>
-      <BlogFooter />
-    </div>
-  </body>
-</html>
+<HomeLayout title={title}>
+  <main class="container mx-auto flex-1 px-4 py-8">
+    <Breadcrumb items={breadcrumbItems} />
+    <slot />
+  </main>
+  <BlogFooter />
+</HomeLayout>
