@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from 'astro:content'
+
+import BlogFooter from '@/components/BlogFooter.astro'
+import MainLayout from '@/layouts/main.astro'
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog')
+  return posts.map(post => ({
+    params: { id: post.data.id },
+    props: { post },
+  }))
+}
+
+const { post } = Astro.props
+const { Content } = await render(post)
+---
+
+<MainLayout content={{ title: post.data.title }}>
+  <main class="container mx-auto py-12">
+    <article>
+      <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
+      <p class="mb-8 text-sm">
+        Published: {new Date(post.data.date).toLocaleDateString()}
+      </p>
+      <article class="prose max-w-none">
+        <Content />
+      </article>
+    </article>
+  </main>
+  <BlogFooter />
+</MainLayout>

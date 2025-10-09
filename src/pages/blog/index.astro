@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content'
+
+import BlogFooter from '@/components/BlogFooter.astro'
+import MainLayout from '@/layouts/main.astro'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+)
+---
+
+<MainLayout content={{ title: 'Blogs' }}>
+  <main class="container mx-auto flex-1 py-12">
+    <h1 class="mb-4 text-5xl font-extrabold">Blog</h1>
+    <ul class="list-disc pl-5">
+      {
+        posts.map(post => (
+          <article class="mb-2">
+            <a href={`/blog/${post.data.id}/`} class="hover:underline">
+              <h2 class="text-2xl leading-loose font-semibold">{post.data.title}</h2>
+              <p>{post.data.description || ''}</p>
+              <p class="leading-loose text-muted-foreground">
+                {new Date(post.data.date).toLocaleDateString()}
+              </p>
+            </a>
+          </article>
+          <hr class="my-4" />
+        ))
+      }
+    </ul>
+  </main>
+  <BlogFooter />
+</MainLayout>
