@@ -3,8 +3,14 @@ import betterTailwindcss from 'eslint-plugin-better-tailwindcss'
 
 export default antfu(
   {
+    formatter: true,
     astro: true,
     react: true,
+  },
+  {
+    rules: {
+      'style/quotes': ['error', 'single', { avoidEscape: true }],
+    },
   },
   {
     plugins: {
