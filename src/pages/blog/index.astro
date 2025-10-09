@@ -1,42 +1,38 @@
 ---
 import { getCollection } from 'astro:content'
 import { ArrowRight } from 'lucide-react'
-import BlogFooter from '@/components/BlogFooter.astro'
 import { H1, H2, Lead as Muted } from '@/components/ui/typography'
-import MainLayout from '@/layouts/main.astro'
+import BaseLayout from '@/layouts/BaseLayout.astro'
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 )
 ---
 
-<MainLayout content={{ title: 'Blogs' }}>
-  <main class="container mx-auto px-4 py-8">
-    <H1>Blog</H1>
-    <Muted className="mt-6">
-      Welcome to the blog! Here you can find articles on various topics.
-    </Muted>
-    <H2 className="mt-6">Latest Posts</H2>
-    {
-      posts.map(({ data: { id, title, description, date } }) => (
-        <a
-          href={`/blog/${id}/`}
-          class={`
-            mt-6 block rounded-lg border bg-card p-6 transition-shadow
-            hover:shadow-lg
-          `}
-        >
-          <div class="flex items-center justify-between">
-            <h3 class="mb-2 text-2xl font-bold">{title}</h3>
-            <ArrowRight className="inline-block size-8" />
-          </div>
-          <Muted className="mt-2">{description || ''}</Muted>
-          <Muted className="mt-2 text-sm">
-            {new Date(date).toLocaleDateString()}
-          </Muted>
-        </a>
-      ))
-    }
-  </main>
-  <BlogFooter />
-</MainLayout>
+<BaseLayout content={{ title: 'Blogs' }}>
+  <H1>Blog</H1>
+  <Muted className="mt-6">
+    Welcome to the blog! Here you can find articles on various topics.
+  </Muted>
+  <H2 className="mt-6">Latest Posts</H2>
+  {
+    posts.map(({ data: { id, title, description, date } }) => (
+      <a
+        href={`/blog/${id}/`}
+        class={`
+          mt-6 block rounded-lg border bg-card p-6 transition-shadow
+          hover:shadow-lg
+        `}
+      >
+        <div class="flex items-center justify-between">
+          <h3 class="mb-2 text-2xl font-bold">{title}</h3>
+          <ArrowRight className="inline-block size-8" />
+        </div>
+        <Muted className="mt-2">{description || ''}</Muted>
+        <Muted className="mt-2 text-sm">
+          {new Date(date).toLocaleDateString()}
+        </Muted>
+      </a>
+    ))
+  }
+</BaseLayout>

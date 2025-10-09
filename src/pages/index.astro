@@ -3,7 +3,7 @@ import { getImage, Image } from 'astro:assets'
 import myBackground from '@/assets/scene.jpg'
 
 import GithubIcon from '@/components/icons/Github.astro'
-import MainLayout from '@/layouts/main.astro'
+import HomeLayout from '@/layouts/HomeLayout.astro'
 
 const optimizedBackground = await getImage({
   src: myBackground,
@@ -11,7 +11,7 @@ const optimizedBackground = await getImage({
 })
 ---
 
-<MainLayout content={{ title: 'I am Alex Chen and I do code' }}>
+<HomeLayout content={{ title: 'I am Alex Chen and I do code' }}>
   <main
     class={`
       grid flex-1 grid-cols-1 bg-cover bg-center
@@ -70,4 +70,4 @@ const optimizedBackground = await getImage({
       </div>
     </div>
   </main>
-</MainLayout>
+</HomeLayout>
