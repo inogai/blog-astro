@@ -7,17 +7,22 @@ import NavLink from '@/components/NavLink.astro'
   <a
     href="/"
     class={`
-      ml-4 flex items-center gap-x-1
+      ml-4 flex items-center
       hover:opacity-50
     `}
   >
     <span class="text-primary">
       <Logo />
     </span>
-    <span class="font-mono font-bold">inogai,</span>
-    <span class="text-sm font-light text-muted-foreground">
-      an HKUST Student</span
+    <span class="ml-2 font-mono font-bold">inogai,</span>
+    <span
+      class={`
+        ml-1 hidden text-sm font-light text-muted-foreground
+        md:block
+      `}
     >
+      a UG at HKUST
+    </span>
   </a>
 
   <div class="flex-1"></div>
