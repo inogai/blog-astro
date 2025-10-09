@@ -3,7 +3,6 @@ import { getImage, Image } from 'astro:assets'
 import myBackground from '@/assets/scene.jpg'
 
 import GithubIcon from '@/components/icons/Github.astro'
-
 import MainLayout from '@/layouts/main.astro'
 
 const optimizedBackground = await getImage({
@@ -13,46 +12,62 @@ const optimizedBackground = await getImage({
 ---
 
 <MainLayout content={{ title: 'I am Alex Chen and I do code' }}>
-  <div
-    class="grid h-screen grid-cols-2 bg-cover bg-center"
+  <main
+    class={`
+      grid flex-1 grid-cols-1 bg-cover bg-center
+      md:grid-cols-2
+    `}
     style={{
       backgroundImage: `url(${optimizedBackground.src})`,
     }}
   >
-    <div class="flex items-center justify-center">
+    <div
+      class={`
+        flex items-center justify-center p-3
+        md:p-8
+      `}
+    >
       <Image
         src="https://avatars.githubusercontent.com/u/29174058?v=4"
-        width={384}
-        height={384}
+        width={512}
+        height={512}
         alt="Alex Chen"
-        class="rounded-full"
+        class="max-w-[50vmin] rounded-full"
+        layout="constrained"
       />
     </div>
     <div
       class={`
-        flex items-center bg-black/50 p-8 text-background backdrop-blur-sm
+        flex items-center justify-center bg-black/50 p-3 text-background
+        backdrop-blur-sm
+        md:p-8
       `}
     >
-      <div class="text-left">
-        <h1 class="font-mono text-8xl font-bold">inogai</h1>
-        <h2 class="mt-4 text-2xl font-bold">I am Alex Chen and I do code.</h2>
-        <p class="mt-2 max-w-md text-muted">
+      <div
+        class={`
+          max-w-md text-center
+          md:text-left
+        `}
+      >
+        <h1 class="font-mono text-6xl leading-relaxed font-bold">inogai</h1>
+        <h2 class="text-2xl leading-loose font-bold">
+          I am Alex Chen and I do code.
+        </h2>
+        <p class="leading-relaxed text-muted">
           Computer Engineering Student at HKUST. Frontend, Scripting and AI
           Agents. Dotfiles ricing.
         </p>
-
-        <div class="flex basis-0 pt-4">
+        <p class="mt-2">
           <a
             class="hover:opacity-50"
             href="https://github.com/inogai"
             target="_blank"
             rel="noreferrer noopener"
           >
-            <span class="sr-only">View my GitHub profile</span>
             <GithubIcon />
           </a>
-        </div>
+        </p>
       </div>
     </div>
-  </div>
+  </main>
 </MainLayout>
