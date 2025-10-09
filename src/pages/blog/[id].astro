@@ -17,13 +17,13 @@ const { Content } = await render(post)
 ---
 
 <MainLayout content={{ title: post.data.title }}>
-  <main class="container mx-auto py-12">
+  <main class="container mx-auto px-4 py-8 typography">
     <article>
       <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
       <p class="mb-8 text-sm">
         Published: {new Date(post.data.date).toLocaleDateString()}
       </p>
-      <article class="prose max-w-none">
+      <article class="max-w-none">
         <Content />
       </article>
     </article>

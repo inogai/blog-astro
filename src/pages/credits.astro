@@ -1,4 +1,5 @@
 ---
+import { H1, H2, Lead } from '@/components/ui/typography'
 import MainLayout from '@/layouts/main.astro'
 
 const categories = [
@@ -63,19 +64,19 @@ const categories = [
 
 <MainLayout content={{ title: 'Credits' }}>
   <div class="container mx-auto px-4 py-8">
-    <h1 class="mb-4 text-4xl font-bold">Credits</h1>
-    <p class="mb-8 text-lg text-muted-foreground">
+    <H1>Credits</H1>
+    <Lead className="mt-6">
       This website is built with some of the best open-source tools available. A
       huge thanks to the creators and maintainers of these projects.
-    </p>
-    <div class="space-y-8">
+    </Lead>
+    <div class="mt-6 space-y-6">
       {
         categories.map(category => (
           <div>
-            <h2 class="mb-4 text-3xl font-bold">{category.name}</h2>
+            <H2>{category.name}</H2>
             <div
               class={`
-                grid gap-4
+                mt-6 grid gap-4
                 md:grid-cols-2
                 lg:grid-cols-3
               `}

@@ -1,7 +1,8 @@
 ---
 import { getCollection } from 'astro:content'
-
+import { ArrowRight } from 'lucide-react'
 import BlogFooter from '@/components/BlogFooter.astro'
+import { H1, H2, Lead as Muted } from '@/components/ui/typography'
 import MainLayout from '@/layouts/main.astro'
 
 const posts = (await getCollection('blog')).sort(
@@ -10,24 +11,32 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <MainLayout content={{ title: 'Blogs' }}>
-  <main class="container mx-auto flex-1 py-12">
-    <h1 class="mb-4 text-5xl font-extrabold">Blog</h1>
-    <ul class="list-disc pl-5">
-      {
-        posts.map(post => (
-          <article class="mb-2">
-            <a href={`/blog/${post.data.id}/`} class="hover:underline">
-              <h2 class="text-2xl leading-loose font-semibold">{post.data.title}</h2>
-              <p>{post.data.description || ''}</p>
-              <p class="leading-loose text-muted-foreground">
-                {new Date(post.data.date).toLocaleDateString()}
-              </p>
-            </a>
-          </article>
-          <hr class="my-4" />
-        ))
-      }
-    </ul>
+  <main class="container mx-auto px-4 py-8">
+    <H1>Blog</H1>
+    <Muted className="mt-6">
+      Welcome to the blog! Here you can find articles on various topics.
+    </Muted>
+    <H2 className="mt-6">Latest Posts</H2>
+    {
+      posts.map(({ data: { id, title, description, date } }) => (
+        <a
+          href={`/blog/${id}/`}
+          class={`
+            mt-6 block rounded-lg border bg-card p-6 transition-shadow
+            hover:shadow-lg
+          `}
+        >
+          <div class="flex items-center justify-between">
+            <h3 class="mb-2 text-2xl font-bold">{title}</h3>
+            <ArrowRight className="inline-block size-8" />
+          </div>
+          <Muted className="mt-2">{description || ''}</Muted>
+          <Muted className="mt-2 text-sm">
+            {new Date(date).toLocaleDateString()}
+          </Muted>
+        </a>
+      ))
+    }
   </main>
   <BlogFooter />
 </MainLayout>
