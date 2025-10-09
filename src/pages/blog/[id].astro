@@ -11,11 +11,23 @@ export async function getStaticPaths() {
   }))
 }
 
+console.log(Astro.url.pathname)
+
 const { post } = Astro.props
 const { Content } = await render(post)
 ---
 
-<BaseLayout content={{ title: post.data.title }}>
+<BaseLayout
+  title={post.data.title}
+  breadcrumb={{
+    overrides: [
+      {
+        href: Astro.url.pathname,
+        label: post.data.title,
+      },
+    ],
+  }}
+>
   <article>
     <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
     <p class="mb-8 text-sm">
