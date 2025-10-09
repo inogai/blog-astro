@@ -1,0 +1,30 @@
+---
+import Logo from '@/components/icons/Logo.astro'
+import NavLink from '@/components/NavLink.astro'
+---
+
+<header class="sticky top-0 flex h-12 border-b bg-background">
+  <a
+    href="/"
+    class={`
+      ml-4 flex items-center gap-x-1
+      hover:opacity-50
+    `}
+  >
+    <Logo />
+    <span class="font-mono font-bold">inogai,</span>
+    <span class="text-sm font-light text-muted-foreground">
+      an HKUST Student</span
+    >
+  </a>
+
+  <div class="flex-1"></div>
+
+  <div class="flex">
+    <NavLink href="/">
+      <span class="font-bold">Home</span>
+    </NavLink>
+    <!-- <NavLink href="/timeline/">Timeline</NavLink> -->
+    <NavLink href="/credits/">Credits</NavLink>
+  </div>
+</header>

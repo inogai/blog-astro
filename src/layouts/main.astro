@@ -1,7 +1,9 @@
 ---
-import '../styles/global.css'
+import NavBar from '@/components/NavBar.astro'
 
-const { content } = Astro.props;
+import '@/styles/global.css'
+
+const { content } = Astro.props
 ---
 
 <html lang="en">
@@ -9,9 +11,12 @@ const { content } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{content.title}</title>
+    <title>{content.title} | inogai - Alex Chen</title>
   </head>
   <body>
-    <slot />
+    <div class="flex min-h-screen flex-col">
+      <NavBar />
+      <slot />
+    </div>
   </body>
 </html>

@@ -1,0 +1,103 @@
+---
+import MainLayout from '@/layouts/main.astro'
+
+const categories = [
+  {
+    name: 'Core Stack',
+    technologies: [
+      {
+        name: 'Astro',
+        url: 'https://astro.build/',
+        description:
+          'Very cool meta-framework with a neat way of isolating client/server components.',
+      },
+      {
+        name: 'React',
+        url: 'https://react.dev/',
+        description: 'Good old React, because why not?',
+      },
+    ],
+  },
+  {
+    name: 'UI & Design',
+    technologies: [
+      {
+        name: 'shadcn/ui',
+        url: 'https://ui.shadcn.com/',
+        description: 'Cool components built with Radix UI and Tailwind CSS.',
+      },
+      {
+        name: 'tweak-cn',
+        url: 'https://tweak-cn.vercel.app/',
+        description: 'Like this paper-ish colorscheme? Me too.',
+      },
+    ],
+  },
+  {
+    name: 'Tooling',
+    technologies: [
+      {
+        name: 'ESLint',
+        url: 'https://eslint.org/',
+        description: 'Cool linting tool. Also do some formatting too.',
+      },
+      {
+        name: '@antfu/eslint-config',
+        url: 'https://github.com/antfu/eslint-config',
+        description: 'Sensible defaults by Anthony Fu.',
+      },
+      {
+        name: 'Prettier',
+        url: 'https://prettier.io/',
+        description: 'ESLint is not that good for .astro, so...',
+      },
+      {
+        name: '... And more!',
+        url: 'https://github.com/inogai/blog-astro',
+        description: 'Check out the source code for all the fascinating tools!',
+      },
+    ],
+  },
+]
+---
+
+<MainLayout content={{ title: 'Credits' }}>
+  <div class="container mx-auto px-4 py-8">
+    <h1 class="mb-4 text-4xl font-bold">Credits</h1>
+    <p class="mb-8 text-lg text-muted-foreground">
+      This website is built with some of the best open-source tools available. A
+      huge thanks to the creators and maintainers of these projects.
+    </p>
+    <div class="space-y-8">
+      {
+        categories.map(category => (
+          <div>
+            <h2 class="mb-4 text-3xl font-bold">{category.name}</h2>
+            <div
+              class={`
+                grid gap-4
+                md:grid-cols-2
+                lg:grid-cols-3
+              `}
+            >
+              {category.technologies.map(tech => (
+                <a
+                  href={tech.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={`
+                    block rounded-lg border bg-card p-6 transition-shadow
+                    hover:shadow-lg
+                  `}
+                >
+                  <h3 class="mb-2 text-2xl font-bold">{tech.name}</h3>
+                  <p class="text-muted-foreground">{tech.description}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</MainLayout>
