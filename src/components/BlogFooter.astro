@@ -1,14 +1,16 @@
 <footer
   class={`
-    flex h-20 items-center justify-center bg-secondary text-sm
+    flex min-h-20 items-center bg-secondary px-4 py-2 text-sm
     text-secondary-foreground
   `}
 >
-  &copy; {new Date().getFullYear()}, inogai. &nbsp;
-  <a
-    class="italic underline"
-    href="https://en.wikipedia.org/wiki/All_rights_reserved"
-  >
-    This apparently doesn't do anything</a
-  >, I am just adding it to introduce a nice footer.
+  <div>
+    &copy; {new Date().getFullYear()}, inogai. &nbsp;
+    <a
+      class="italic underline"
+      href="https://en.wikipedia.org/wiki/All_rights_reserved"
+    >
+      This apparently doesn't do anything
+    </a>, I am just adding it to introduce a nice footer.
+  </div>
 </footer>
