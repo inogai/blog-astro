@@ -1,10 +1,20 @@
 ---
+import i18next from 'i18next'
 import { H1, H2, Lead } from '@/components/ui/typography'
+import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths } from '@/lib/i18n-utils'
+
+export async function getStaticPaths() {
+  return getI18nStaticPaths()
+}
+
+const locale = Astro.params.locale
+i18next.changeLanguage(locale)
 
 const categories = [
   {
-    name: 'Core Stack',
+    name: t('credits.coreStack'),
     technologies: [
       {
         name: 'Astro',
@@ -20,7 +30,7 @@ const categories = [
     ],
   },
   {
-    name: 'UI & Design',
+    name: t('credits.uiDesign'),
     technologies: [
       {
         name: 'shadcn/ui',
@@ -35,7 +45,7 @@ const categories = [
     ],
   },
   {
-    name: 'Tooling',
+    name: t('credits.tooling'),
     technologies: [
       {
         name: 'ESLint',
@@ -62,11 +72,10 @@ const categories = [
 ]
 ---
 
-<BaseLayout title='Credits'>
-  <H1>Credits</H1>
+<BaseLayout title={t('credits.title')}>
+  <H1>{t('credits.title')}</H1>
   <Lead className="mt-6">
-    This website is built with some of the best open-source tools available. A
-    huge thanks to the creators and maintainers of these projects.
+    {t('credits.description')}
   </Lead>
   <div class="mt-6 space-y-6">
     {

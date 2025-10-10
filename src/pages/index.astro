@@ -1,73 +1,20 @@
 ---
-import { getImage, Image } from 'astro:assets'
-import myBackground from '@/assets/scene.jpg'
 
-import GithubIcon from '@/components/icons/Github.astro'
-import HomeLayout from '@/layouts/HomeLayout.astro'
-
-const optimizedBackground = await getImage({
-  src: myBackground,
-  format: 'webp',
-})
 ---
 
-<HomeLayout title='I am Alex Chen and I do code'>
-  <main
-    class={`
-      grid flex-1 grid-cols-1 bg-cover bg-center
-      md:grid-cols-2
-    `}
-    style={{
-      backgroundImage: `url(${optimizedBackground.src})`,
-    }}
-  >
-    <div
-      class={`
-        flex items-center justify-center p-3
-        md:p-8
-      `}
-    >
-      <Image
-        src="https://avatars.githubusercontent.com/u/29174058?v=4"
-        width={512}
-        height={512}
-        alt="Alex Chen"
-        class="max-w-[50vmin] rounded-full"
-        layout="constrained"
-      />
-    </div>
-    <div
-      class={`
-        flex items-center justify-center bg-black/50 p-3 text-background
-        backdrop-blur-sm
-        md:p-8
-      `}
-    >
-      <div
-        class={`
-          max-w-md text-center
-          md:text-left
-        `}
-      >
-        <h1 class="font-mono text-6xl leading-relaxed font-bold">inogai</h1>
-        <h2 class="text-2xl leading-loose font-bold">
-          I am Alex Chen and I do code.
-        </h2>
-        <p class="leading-relaxed text-muted">
-          Computer Engineering Student at HKUST. Frontend, Scripting and AI
-          Agents. Dotfiles ricing.
-        </p>
-        <p class="mt-2">
-          <a
-            class="hover:opacity-50"
-            href="https://github.com/inogai"
-            target="_blank"
-            rel="noreferrer noopener"
-          >
-            <GithubIcon />
-          </a>
-        </p>
-      </div>
-    </div>
-  </main>
-</HomeLayout>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+  </head>
+  <body>
+    <script>
+      const userLang = navigator.language
+      const locale = userLang.startsWith('zh') ? 'zh' : 'en'
+      window.location.href = `/${locale}`
+    </script>
+    <p>Redirecting to the main site...</p>
+  </body>
+</html>
+

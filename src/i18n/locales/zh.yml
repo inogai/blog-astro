@@ -1,0 +1,27 @@
+nav:
+  home: 首頁
+  blog: 部落格
+  credits: 致謝
+  language: 選擇語言
+home:
+  title: I am Alex Chen and I do code.
+  subtitle: inogai
+  description: HKUST 電腦工程系學生。前端、腳本和 AI Agent。Dotfiles ricing。
+blog:
+  title: 部落格
+  welcome: 歡迎來到部落格！這裡你可以找到各種主題的文章。
+  latestPosts: 最新文章
+  published: 發布日期：
+credits:
+  title: 致謝
+  description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
+  coreStack: 核心技術棧
+  uiDesign: UI 和設計
+  tooling: 工具
+navbar:
+  name: inogai,
+  subtitle: an UG at HKUST
+breadcrumb:
+  home: 首頁
+title:
+  suffix: ' | inogai'

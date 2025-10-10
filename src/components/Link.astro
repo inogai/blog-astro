@@ -1,0 +1,19 @@
+---
+interface Props {
+  href: string
+  class?: string
+}
+
+const { href, class: className } = Astro.props
+const locale = Astro.params.locale || 'en'
+
+// If href is absolute internal link, prefix with locale
+const hrefWithLocale
+  = href.startsWith('/') && !href.match(/^\/(en|zh)\//)
+    ? `/${locale}${href}`
+    : href
+---
+
+<a href={hrefWithLocale} class={className}>
+  <slot />
+</a>

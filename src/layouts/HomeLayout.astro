@@ -1,5 +1,6 @@
 ---
 import NavBar from '@/components/NavBar.astro'
+import { t } from '@/i18n/ui'
 
 import '@/styles/global.css'
 
@@ -8,14 +9,15 @@ interface Props {
 }
 
 const { title } = Astro.props
+const locale = Astro.params.locale || ''
 ---
 
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{title} | inogai - Alex Chen</title>
+    <title>{title}{t('title.suffix')}</title>
   </head>
   <body>
     <div class="flex min-h-screen flex-col">

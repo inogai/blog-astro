@@ -1,17 +1,19 @@
 ---
 import { getCollection, render } from 'astro:content'
-
+import i18next from 'i18next'
+import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths } from '@/lib/i18n-utils'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')
-  return posts.map(post => ({
-    params: { id: post.data.id },
-    props: { post },
-  }))
+  return getI18nStaticPaths(
+    posts.map(post => ({ id: post.data.id, props: { post } })),
+  )
 }
 
-console.log(Astro.url.pathname)
+const locale = Astro.params.locale
+i18next.changeLanguage(locale)
 
 const { post } = Astro.props
 const { Content } = await render(post)
@@ -31,7 +33,8 @@ const { Content } = await render(post)
   <article>
     <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
     <p class="mb-8 text-sm">
-      Published: {new Date(post.data.date).toLocaleDateString()}
+      {t('blog.published')}
+      {new Date(post.data.date).toLocaleDateString()}
     </p>
     <article class="max-w-none typography">
       <Content />

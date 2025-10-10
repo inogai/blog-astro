@@ -1,10 +1,15 @@
 ---
 import Logo from '@/components/icons/Logo.astro'
+import LanguageSwitcher from '@/components/LanguageSwitcher.tsx'
+import Link from '@/components/Link.astro'
 import NavLink from '@/components/NavLink.astro'
+import { t } from '@/i18n/ui'
+
+const locale = Astro.params.locale || 'en'
 ---
 
 <header class="sticky top-0 flex h-12 border-b bg-background">
-  <a
+  <Link
     href="/"
     class={`
       ml-4 flex items-center
@@ -14,25 +19,27 @@ import NavLink from '@/components/NavLink.astro'
     <span class="text-primary">
       <Logo />
     </span>
-    <span class="ml-2 font-mono font-bold">inogai,</span>
+    <span class="ml-2 font-mono font-bold">{t('navbar.name')}</span>
     <span
       class={`
         ml-1 hidden text-sm font-light text-muted-foreground
         md:block
       `}
     >
-      a UG at HKUST
+      {t('navbar.subtitle')}
     </span>
-  </a>
+  </Link>
 
   <div class="flex-1"></div>
 
-  <div class="flex">
-    <NavLink href="/">
-      <span class="font-bold">Home</span>
+  <div class="flex items-center">
+    <LanguageSwitcher locale={locale} client:load />
+
+    <NavLink href={`/${locale}/`}>
+      <span class="font-bold">{t('nav.home')}</span>
     </NavLink>
-    <NavLink href="/blog/">Blog</NavLink>
+    <NavLink href={`/${locale}/blog/`}>{t('nav.blog')}</NavLink>
     <!-- <NavLink href="/timeline/">Timeline</NavLink> -->
-    <NavLink href="/credits/">Credits</NavLink>
+    <NavLink href={`/${locale}/credits/`}>{t('nav.credits')}</NavLink>
   </div>
 </header>

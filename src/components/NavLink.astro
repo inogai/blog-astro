@@ -1,12 +1,20 @@
 ---
+import Link from '@/components/Link.astro'
 import { cn } from '@/lib/utils.js'
 
 const { href } = Astro.props
 
-const isActive = href === Astro.url.pathname
+const locale = Astro.params.locale || 'en'
+const hrefWithLocale
+  = href.startsWith('/') && !href.match(/^\/(en|zh)\//)
+    ? `/${locale}${href}`
+    : href
+
+const isActive = hrefWithLocale === Astro.url.pathname
 ---
 
-<a
+<Link
+  href={href}
   class={cn(
     `
       flex h-full items-center px-3
@@ -15,7 +23,6 @@ const isActive = href === Astro.url.pathname
     `,
     isActive && 'pointer-events-none bg-primary text-primary-foreground',
   )}
-  href={href}
 >
   <slot />
-</a>
+</Link>

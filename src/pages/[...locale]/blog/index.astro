@@ -1,23 +1,30 @@
 ---
 import { getCollection } from 'astro:content'
 import { ArrowRight } from 'lucide-react'
+import Link from '@/components/Link.astro'
 import { H1, H2, Lead as Muted } from '@/components/ui/typography'
+import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths } from '@/lib/i18n-utils'
+
+export async function getStaticPaths() {
+  return getI18nStaticPaths()
+}
 
 const posts = (await getCollection('blog')).sort(
   (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
 )
 ---
 
-<BaseLayout title='Blogs'>
-  <H1>Blog</H1>
+<BaseLayout title={t('blog.title')}>
+  <H1>{t('blog.title')}</H1>
   <Muted className="mt-6">
-    Welcome to the blog! Here you can find articles on various topics.
+    {t('blog.welcome')}
   </Muted>
-  <H2 className="mt-6">Latest Posts</H2>
+  <H2 className="mt-6">{t('blog.latestPosts')}</H2>
   {
     posts.map(({ data: { id, title, description, date } }) => (
-      <a
+      <Link
         href={`/blog/${id}/`}
         class={`
           mt-6 block rounded-lg border bg-card p-6 transition-shadow
@@ -32,7 +39,7 @@ const posts = (await getCollection('blog')).sort(
         <Muted className="mt-2 text-sm">
           {new Date(date).toLocaleDateString()}
         </Muted>
-      </a>
+      </Link>
     ))
   }
 </BaseLayout>
