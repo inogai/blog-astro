@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content'
 import i18next from 'i18next'
+import { TableOfContents } from '@/components/TableOfContents'
 import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getI18nStaticPaths } from '@/lib/i18n-utils'
@@ -16,7 +17,7 @@ const locale = Astro.params.locale
 i18next.changeLanguage(locale)
 
 const { post } = Astro.props
-const { Content } = await render(post)
+const { Content, headings } = await render(post)
 ---
 
 <BaseLayout
@@ -30,22 +31,32 @@ const { Content } = await render(post)
     ],
   }}
 >
-  <article>
-    <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
-    <p class="mb-8 text-sm">
-      {t('blog.created')}
-      {new Date(post.data.created).toLocaleDateString()}
-      {
-        post.data.updated !== post.data.created && (
-          <span class="ml-2">
-            {t('blog.updated')}
-            {new Date(post.data.updated).toLocaleDateString()}
-          </span>
-        )
-      }
-    </p>
-    <article class="prose max-w-none">
-      <Content />
+  <div class="flex gap-8">
+    <aside
+      class={`
+        hidden w-64 flex-shrink-0
+        lg:block
+      `}
+    >
+      <TableOfContents headings={headings} client:load />
+    </aside>
+    <article class="min-w-0 flex-1">
+      <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
+      <p class="mb-8 text-sm">
+        {t('blog.created')}
+        {new Date(post.data.created).toLocaleDateString()}
+        {
+          post.data.updated !== post.data.created && (
+            <span class="ml-2">
+              {t('blog.updated')}
+              {new Date(post.data.updated).toLocaleDateString()}
+            </span>
+          )
+        }
+      </p>
+      <div class="prose max-w-none">
+        <Content />
+      </div>
     </article>
-  </article>
+  </div>
 </BaseLayout>
