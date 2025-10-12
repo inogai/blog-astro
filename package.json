@@ -34,7 +34,8 @@
     "remark-gfm": "^4.0.1",
     "remark-wiki-link": "^2.0.1",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.13"
+    "tailwindcss": "^4.1.13",
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.4.1",
