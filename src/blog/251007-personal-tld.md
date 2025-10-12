@@ -2,7 +2,7 @@
 id: personal-tld
 title: 我的個人頂級域名 (TLD)
 description: "我買了自己的 TLD: inogai.com，這是一點碎碎念。"
-aliases: []
+aliases: [我的個人頂級域名 (TLD)]
 tags: []
 created: 2025-10-07
 updated: 2025-10-12
