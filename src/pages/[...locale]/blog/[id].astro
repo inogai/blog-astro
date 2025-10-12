@@ -33,8 +33,16 @@ const { Content } = await render(post)
   <article>
     <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
     <p class="mb-8 text-sm">
-      {t('blog.published')}
-      {new Date(post.data.date).toLocaleDateString()}
+      {t('blog.created')}
+      {new Date(post.data.created).toLocaleDateString()}
+      {
+        post.data.updated !== post.data.created && (
+          <span class="ml-2">
+            {t('blog.updated')}
+            {new Date(post.data.updated).toLocaleDateString()}
+          </span>
+        )
+      }
     </p>
     <article class="max-w-none typography">
       <Content />

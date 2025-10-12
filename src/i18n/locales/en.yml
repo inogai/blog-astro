@@ -11,7 +11,8 @@ blog:
   title: Blog
   welcome: Welcome to the blog! Here you can find articles on various topics.
   latestPosts: Latest Posts
-  published: 'Published: '
+  created: 'Created: '
+  updated: 'Updated: '
 credits:
   title: Credits
   description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.

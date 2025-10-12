@@ -7,10 +7,11 @@ const blog = defineCollection({
     base: './src/blog/',
   }),
   schema: z.object({
-    title: z.string(),
     id: z.string(),
-    date: z.date(),
-    description: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    created: z.date(),
+    updated: z.date(),
   }),
 })
 

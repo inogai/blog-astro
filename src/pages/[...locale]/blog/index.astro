@@ -12,7 +12,8 @@ export async function getStaticPaths() {
 }
 
 const posts = (await getCollection('blog')).sort(
-  (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime(),
+  (a, b) =>
+    new Date(b.data.created).getTime() - new Date(a.data.created).getTime(),
 )
 ---
 
@@ -23,7 +24,7 @@ const posts = (await getCollection('blog')).sort(
   </Muted>
   <H2 className="mt-6">{t('blog.latestPosts')}</H2>
   {
-    posts.map(({ data: { id, title, description, date } }) => (
+    posts.map(({ data: { id, title, description, created: date } }) => (
       <Link
         href={`/blog/${id}/`}
         class={`
@@ -35,7 +36,7 @@ const posts = (await getCollection('blog')).sort(
           <h3 class="mb-2 text-2xl font-bold">{title}</h3>
           <ArrowRight className="inline-block size-8" />
         </div>
-        <Muted className="mt-2">{description || ''}</Muted>
+        <Muted className="mt-2">{description}</Muted>
         <Muted className="mt-2 text-sm">
           {new Date(date).toLocaleDateString()}
         </Muted>

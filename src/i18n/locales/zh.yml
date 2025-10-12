@@ -11,7 +11,8 @@ blog:
   title: 部落格
   welcome: 歡迎來到部落格！這裡你可以找到各種主題的文章。
   latestPosts: 最新文章
-  published: 發布日期：
+  created: '創建於： '
+  updated: '更新於： '
 credits:
   title: 致謝
   description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.

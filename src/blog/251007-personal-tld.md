@@ -1,15 +1,16 @@
 ---
 id: personal-tld
+title: 我的個人頂級域名 (TLD)
+description: "我買了自己的 TLD: inogai.com，這是一點碎碎念。"
 aliases: []
 tags: []
-date: 2025-10-07
-description: 在 Spaceship.com 購買了域名 https://inogai.com ……
-title: 我的個人頂級域名 (TLD)
+created: 2025-10-07
+updated: 2025-10-12
+published: true
 ---
 
 在 [Spaceship.com](https://www.spaceship.com/) 購買了域名 <https://inogai.com>。
-續費 HKD 80 一年。選擇 Spaceship 的主要理由是發現他支援用 Tap & Go 的 Mastercard
-付款。據我所知，許多網絡服務商都不支援 Tap & Go 當作 Credit Card 支付。
+續費 HKD 80 一年。
 
 Spaceship 的性價比當然比不過內地的域名註冊商，但相對於其他的域名註冊商來說還是相
 當不錯的。比如 Namecheap 上的 .com 域名就要到 USD 14.98 / 年。與此同時，內地的域
