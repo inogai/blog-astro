@@ -18,6 +18,10 @@ export default antfu(
     },
     rules: {
       ...betterTailwindcss.configs.recommended.rules,
+      'better-tailwindcss/no-unregistered-classes': [
+        'error',
+        { detectComponentClasses: true },
+      ],
     },
     settings: {
       'better-tailwindcss': {

@@ -1,0 +1,22 @@
+/* This file contains base styles and imports for the project */
+@reference 'tailwindcss';
+@reference './theme.css';
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  code {
+    font-family: var(--font-mono);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    @apply m-0 bg-background text-foreground;
+    letter-spacing: var(--tracking-normal);
+  }
+}
