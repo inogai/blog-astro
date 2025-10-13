@@ -62,10 +62,40 @@ const categories = [
         url: 'https://prettier.io/',
         description: 'ESLint is not that good for .astro, so...',
       },
+    ],
+  },
+  {
+    name: t('credits.markdownProcessing'),
+    technologies: [
       {
-        name: '... And more!',
-        url: 'https://github.com/inogai/blog-astro',
-        description: 'Check out the source code for all the fascinating tools!',
+        name: 'astro',
+        url: 'https://astro.build/',
+        description: 'Super cool integration with markdown out of the box.',
+      },
+      {
+        name: 'remark',
+        url: 'https://github.com/remarkjs/remark',
+        description: 'Markdown processor for the blog.',
+      },
+      {
+        name: 'remark-callout',
+        url: 'https://github.com/landakram/remark-wiki-link',
+        description: 'Adds callout support to markdown.',
+      },
+      {
+        name: 'remark-wiki-link',
+        url: 'https://github.com/landakram/remark-wiki-link',
+        description: 'Enables WikiLinks syntax in markdown.',
+      },
+      {
+        name: 'Prettier fork for Markdown CJK',
+        url: 'https://github.com/inogai/prett',
+        description: 'Custom fork for better CJK text handling in markdown.',
+      },
+      {
+        name: 'remark plugin for CJK line wrap',
+        url: 'https://github.com/inogai/blog-astro/blob/main/src/lib/remarkCjkWrap.ts',
+        description: 'Custom plugin for proper CJK line wrapping in markdown.',
       },
     ],
   },

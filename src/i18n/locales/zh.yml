@@ -19,6 +19,7 @@ credits:
   coreStack: 核心技術棧
   uiDesign: UI 和設計
   tooling: 工具
+  markdownProcessing: Markdown 處理
 navbar:
   name: inogai,
   subtitle: an UG at HKUST

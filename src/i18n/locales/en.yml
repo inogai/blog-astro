@@ -19,6 +19,7 @@ credits:
   coreStack: Core Stack
   uiDesign: UI & Design
   tooling: Tooling
+  markdownProcessing: Markdown Processing
 navbar:
   name: inogai,
   subtitle: an UG at HKUST
