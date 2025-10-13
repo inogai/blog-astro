@@ -23,7 +23,7 @@ export default function LanguageSwitcher({ locale }: LanguageSwitcherProps) {
         ref={selectRef}
         value={locale}
         onChange={handleChange}
-        aria-label={t('language')}
+        aria-label={t('nav.language')}
         className={`
           absolute inset-0 cursor-pointer overflow-clip rounded border
           bg-background text-foreground opacity-0
