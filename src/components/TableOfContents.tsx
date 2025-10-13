@@ -38,8 +38,9 @@ export function TableOfContents({ headings }: Props) {
             <a
               href={`#${heading.slug}`}
               className={`
-                block py-1 text-sm text-muted-foreground transition-colors
-                hover:text-foreground
+                block w-full py-1 text-sm text-muted-foreground transition-all
+                hover:text-foreground hover:underline
+                active:text-foreground active:underline
               `}
             >
               {heading.text}

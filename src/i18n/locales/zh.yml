@@ -13,6 +13,7 @@ blog:
   latestPosts: 最新文章
   created: '創建於： '
   updated: '更新於： '
+  tableOfContents: 目錄
 credits:
   title: 致謝
   description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.

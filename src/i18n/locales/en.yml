@@ -13,6 +13,7 @@ blog:
   latestPosts: Latest Posts
   created: 'Created: '
   updated: 'Updated: '
+  tableOfContents: Table of Contents
 credits:
   title: Credits
   description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.

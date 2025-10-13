@@ -31,7 +31,31 @@ const { Content, headings } = await render(post)
     ],
   }}
 >
-  <div class="flex gap-8">
+  <div
+    class={`
+      flex flex-col gap-8
+      lg:flex-row
+    `}
+  >
+    <details
+      class={`
+        group rounded border bg-secondary px-4 text-secondary-foreground
+        lg:hidden
+      `}
+    >
+      <summary
+        class={`
+          cursor-pointer py-4 text-sm font-medium
+          hover:underline hover:opacity-80
+          active:underline active:opacity-80
+        `}
+      >
+        {t('blog.tableOfContents')}
+      </summary>
+      <div class="mb-4">
+        <TableOfContents headings={headings} client:load />
+      </div>
+    </details>
     <aside
       class={`
         hidden w-64 flex-shrink-0
