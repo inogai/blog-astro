@@ -8,9 +8,12 @@ export default antfu(
     react: true,
   },
   {
-    rules: {
-      'style/quotes': ['error', 'single', { avoidEscape: true }],
-    },
+    rules: { 'style/quotes': ['error', 'single', { avoidEscape: true }] },
+  },
+  { // allow trailing spaces rule in markdown files
+    // otherwise eslint may break markdown formatting
+    rules: { 'style/no-trailing-spaces': ['error'] },
+    ignores: ['*.md', '*.mdx'],
   },
   {
     plugins: {
