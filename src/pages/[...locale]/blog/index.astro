@@ -1,6 +1,6 @@
 ---
+import { ArrowRight } from '@lucide/astro'
 import { getCollection } from 'astro:content'
-import { ArrowRight } from 'lucide-react'
 import Link from '@/components/Link.astro'
 import { H1, H2, Lead as Muted } from '@/components/ui/typography'
 import { t } from '@/i18n/ui'
@@ -34,7 +34,7 @@ const posts = (await getCollection('blog')).sort(
       >
         <div class="flex items-center justify-between">
           <h3 class="mb-2 text-2xl font-bold">{title}</h3>
-          <ArrowRight className="inline-block size-8" />
+          <ArrowRight class="inline-block size-8" />
         </div>
         <Muted className="mt-2">{description}</Muted>
         <Muted className="mt-2 text-sm">
