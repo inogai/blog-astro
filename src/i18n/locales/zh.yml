@@ -16,11 +16,6 @@ blog:
   tableOfContents: 目錄
 credits:
   title: 致謝
-  description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
-  coreStack: 核心技術棧
-  uiDesign: UI 和設計
-  tooling: 工具
-  markdownProcessing: Markdown 處理
 navbar:
   name: inogai,
   subtitle: an UG at HKUST

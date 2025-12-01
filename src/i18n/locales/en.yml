@@ -16,11 +16,6 @@ blog:
   tableOfContents: Table of Contents
 credits:
   title: Credits
-  description: This website is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
-  coreStack: Core Stack
-  uiDesign: UI & Design
-  tooling: Tooling
-  markdownProcessing: Markdown Processing
 navbar:
   name: inogai,
   subtitle: an UG at HKUST

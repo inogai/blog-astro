@@ -4,6 +4,9 @@ import { H1, H2, Lead } from '@/components/ui/typography'
 import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getI18nStaticPaths } from '@/lib/i18n-utils'
+import { remark } from 'remark'
+import { visit } from 'unist-util-visit'
+import creditsMd from '../../credits.md?raw'
 
 export async function getStaticPaths() {
   return getI18nStaticPaths()
@@ -12,94 +15,27 @@ export async function getStaticPaths() {
 const locale = Astro.params.locale
 i18next.changeLanguage(locale)
 
-const categories = [
-  {
-    name: t('credits.coreStack'),
-    technologies: [
-      {
-        name: 'Astro',
-        url: 'https://astro.build/',
-        description:
-          'Very cool meta-framework with a neat way of isolating client/server components.',
-      },
-      {
-        name: 'React',
-        url: 'https://react.dev/',
-        description: 'Good old React, because why not?',
-      },
-    ],
-  },
-  {
-    name: t('credits.uiDesign'),
-    technologies: [
-      {
-        name: 'shadcn/ui',
-        url: 'https://ui.shadcn.com/',
-        description: 'Cool components built with Radix UI and Tailwind CSS.',
-      },
-      {
-        name: 'tweak-cn',
-        url: 'https://tweakcn.com/',
-        description: 'Like this paper-ish colorscheme? Me too.',
-      },
-    ],
-  },
-  {
-    name: t('credits.tooling'),
-    technologies: [
-      {
-        name: 'ESLint',
-        url: 'https://eslint.org/',
-        description: 'Cool linting tool. Also do some formatting too.',
-      },
-      {
-        name: '@antfu/eslint-config',
-        url: 'https://github.com/antfu/eslint-config',
-        description: 'Sensible defaults by Anthony Fu.',
-      },
-      {
-        name: 'Prettier',
-        url: 'https://prettier.io/',
-        description: 'ESLint is not that good for .astro, so...',
-      },
-    ],
-  },
-  {
-    name: t('credits.markdownProcessing'),
-    technologies: [
-      {
-        name: 'astro',
-        url: 'https://astro.build/',
-        description: 'Super cool integration with markdown out of the box.',
-      },
-      {
-        name: 'remark',
-        url: 'https://github.com/remarkjs/remark',
-        description: 'Markdown processor for the blog.',
-      },
-      {
-        name: 'remark-callout',
-        url: 'https://github.com/landakram/remark-wiki-link',
-        description: 'Adds callout support to markdown.',
-      },
-      {
-        name: 'remark-wiki-link',
-        url: 'https://github.com/landakram/remark-wiki-link',
-        description: 'Enables WikiLinks syntax in markdown.',
-      },
-      {
-        name: 'Prettier fork for Markdown CJK',
-        url: 'https://github.com/inogai/prett',
-        description: 'Custom fork for better CJK text handling in markdown.',
-      },
-      {
-        name: 'remark plugin for CJK line wrap',
-        url: 'https://github.com/inogai/blog-astro/blob/main/src/lib/remarkCjkWrap.ts',
-        description: 'Custom plugin for proper CJK line wrapping in markdown.',
-      },
-    ],
-  },
-]
+const tree = remark().parse(creditsMd)
+
+const categories = []
+let currentCategory = null
+let currentTech = null
+
+visit(tree, (node) => {
+  if (node.type === 'heading' && node.depth === 2) {
+    currentCategory = { name: node.children[0].value, technologies: [] }
+    categories.push(currentCategory)
+  } else if (node.type === 'heading' && node.depth === 3) {
+    const link = node.children[0]
+    if (link.type === 'link') {
+      currentTech = { name: link.children[0].value, url: link.url, description: '' }
+      currentCategory.technologies.push(currentTech)
+    }
+  } else if (node.type === 'paragraph' && currentTech) {
+    currentTech.description = node.children[0].value
+    currentTech = null
+  }
+})
 ---
 
 <BaseLayout title={t('credits.title')}>
