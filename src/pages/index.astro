@@ -1,20 +1,23 @@
 ---
+/// A Client-side redirect for static hosting
 
+import HomePage from '@/components/HomePage.astro'
+import { t } from '@/i18n/ui'
+import HomeLayout from '@/layouts/HomeLayout.astro'
+
+const locale = 'en'
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <script>
-      const userLang = navigator.language
-      const locale = userLang.startsWith('zh') ? 'zh' : 'en'
-      window.location.href = `/${locale}`
-    </script>
-    <p>Redirecting to the main site...</p>
-  </body>
-</html>
-
+<HomeLayout title={t('home.title')}>
+  <script>
+ const userLang = navigator.language
+ const locale = userLang.startsWith('zh') ? 'zh' : 'en'
+ if (locale === 'zh') {
+   window.location.href = '/zh'
+ }
+ else {
+   history.pushState(null, '', '/en')
+ }
+ </script>
+  <HomePage locale={locale} />
+</HomeLayout>

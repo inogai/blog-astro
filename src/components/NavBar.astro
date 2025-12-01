@@ -33,7 +33,7 @@ const locale = Astro.params.locale || 'en'
   <div class="flex-1"></div>
 
   <div class="flex items-center">
-    <LanguageSwitcher locale={locale} />
+    <LanguageSwitcher />
 
     <NavLink href={`/${locale}/`}>
       <span class="font-bold">{t('nav.home')}</span>
