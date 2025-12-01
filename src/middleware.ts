@@ -4,6 +4,12 @@ import { defineMiddleware } from 'astro:middleware'
 export const onRequest = defineMiddleware((context: any, next: any) => {
   const { pathname } = context.url
 
+  if (typeof pathname !== 'string')
+    return next()
+
+  if (pathname.startsWith('/_image'))
+    return next()
+
   const supportedLocales = ['en', 'zh']
   const localeMatch = pathname.match(/^\/([^/]+)/)
 
