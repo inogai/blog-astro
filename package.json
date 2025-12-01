@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.3.6",
     "@astrojs/react": "^4.4.0",
+    "@lucide/astro": "^0.555.0",
     "@r4ai/remark-callout": "^0.6.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@tailwindcss/vite": "^4.1.13",
@@ -26,7 +27,6 @@
     "gatsby-remark-remove-cjk-breaks": "^1.2.1",
     "i18next": "^25.5.3",
     "js-yaml": "^4.1.0",
-    "lucide-react": "^0.545.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-i18next": "^16.0.0",

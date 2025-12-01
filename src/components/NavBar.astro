@@ -1,6 +1,6 @@
 ---
 import Logo from '@/components/icons/Logo.astro'
-import LanguageSwitcher from '@/components/LanguageSwitcher.tsx'
+import LanguageSwitcher from '@/components/LanguageSwitcher.astro'
 import Link from '@/components/Link.astro'
 import NavLink from '@/components/NavLink.astro'
 import { t } from '@/i18n/ui'
@@ -33,7 +33,7 @@ const locale = Astro.params.locale || 'en'
   <div class="flex-1"></div>
 
   <div class="flex items-center">
-    <LanguageSwitcher locale={locale} client:load />
+    <LanguageSwitcher locale={locale} />
 
     <NavLink href={`/${locale}/`}>
       <span class="font-bold">{t('nav.home')}</span>
