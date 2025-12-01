@@ -18,6 +18,24 @@ Cool components built with Radix UI and Tailwind CSS.
 
 Like this paper-ish colorscheme? Me too.
 
+## Fonts
+
+### [Google Fonts](https://fonts.google.com/)
+
+Free web font hosting by Google.
+
+### [Inter](https://fonts.google.com/specimen/Inter)
+
+Neat sans-serif font for the main text.
+
+### [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+
+Monospace font for code snippets.
+
+### [Lucide Icons](https://lucide.dev/)
+
+These icons you see everywhere? From Lucide.
+
 ## Tooling
 
 ### [ESLint](https://eslint.org/)
@@ -30,13 +48,13 @@ Sensible defaults by Anthony Fu.
 
 ### [Prettier](https://prettier.io/)
 
-ESLint is not that good for .astro, so...
+ESLint Stylistic is not that good for .astro, so...
 
 ## Markdown Processing
 
 ### [astro](https://astro.build/)
 
-Super cool integration with markdown out of the box.
+Super cool integration with markdown. Out of the box.
 
 ### [remark](https://github.com/remarkjs/remark)
 
@@ -50,7 +68,9 @@ Adds callout support to markdown.
 
 Enables WikiLinks syntax in markdown.
 
-### [Prettier fork for Markdown CJK](https://github.com/inogai/prett)
+## My Attributions
+
+### [Prettier fork for Markdown CJK](https://github.com/inogai/prettier)
 
 Custom fork for better CJK text handling in markdown.
 
