@@ -26,5 +26,6 @@ i18next.init({
   },
 })
 
+export { i18next }
 export const t = i18next.t
 export { Trans } from 'react-i18next'
