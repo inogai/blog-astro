@@ -1,11 +1,8 @@
 ---
 import { getImage, Image } from 'astro:assets'
-import i18next from 'i18next'
 import myBackground from '@/assets/scene.jpg'
 import GithubIcon from '@/components/icons/Github.astro'
 import { t } from '@/i18n/ui'
-
-
 
 const optimizedBackground = await getImage({
   src: myBackground,
@@ -72,4 +69,3 @@ const optimizedBackground = await getImage({
     </div>
   </div>
 </main>
-

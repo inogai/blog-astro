@@ -1,11 +1,13 @@
 ---
 /// A Client-side redirect for static hosting
 
+import i18next from 'i18next'
 import HomePage from '@/components/HomePage.astro'
 import { t } from '@/i18n/ui'
 import HomeLayout from '@/layouts/HomeLayout.astro'
 
 const locale = 'en'
+i18next.changeLanguage(locale)
 ---
 
 <HomeLayout title={t('home.title')}>
@@ -19,5 +21,5 @@ const locale = 'en'
    history.pushState(null, '', '/en')
  }
  </script>
-  <HomePage locale={locale} />
+  <HomePage />
 </HomeLayout>
