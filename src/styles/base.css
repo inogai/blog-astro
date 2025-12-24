@@ -1,0 +1,19 @@
+/* This file contains base styles and imports for the project */
+@reference 'tailwindcss';
+@reference './theme.css';
+
+:root {
+    --header-height: calc(var(--spacing) * 14);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply font-sans bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
