@@ -16,6 +16,7 @@ blog:
   tableOfContents: Table of Contents
 credits:
   title: Credits
+  description: This site is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
 navbar:
   name: inogai,
   subtitle: an UG at HKUST
