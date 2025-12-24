@@ -1,11 +1,18 @@
 ---
 import i18next from 'i18next'
+import { remark } from 'remark'
+import { visit } from 'unist-util-visit'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { H1, H2, Lead } from '@/components/ui/typography'
 import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
 import { getI18nStaticPaths } from '@/lib/i18n-utils'
-import { remark } from 'remark'
-import { visit } from 'unist-util-visit'
 import creditsMd from '../../credits.md?raw'
 
 export async function getStaticPaths() {
@@ -17,22 +24,43 @@ i18next.changeLanguage(locale)
 
 const tree = remark().parse(creditsMd)
 
-const categories = []
-let currentCategory = null
-let currentTech = null
+type Technology = {
+  name: string
+  url: string
+  description: string
+}
 
-visit(tree, (node) => {
+type Category = {
+  name: string
+  technologies: Technology[]
+}
+
+const categories: Category[] = []
+let currentCategory: Category | null = null
+let currentTech: Technology | null = null
+
+visit(tree, (node: any) => {
   if (node.type === 'heading' && node.depth === 2) {
-    currentCategory = { name: node.children[0].value, technologies: [] }
-    categories.push(currentCategory)
-  } else if (node.type === 'heading' && node.depth === 3) {
-    const link = node.children[0]
+    const textNode: any = node.children[0]
+    const name = textNode.value ?? textNode.children?.[0]?.value ?? ''
+    currentCategory = { name, technologies: [] }
+    categories.push(currentCategory!)
+  }
+ else if (node.type === 'heading' && node.depth === 3) {
+    const link: any = node.children[0]
     if (link.type === 'link') {
-      currentTech = { name: link.children[0].value, url: link.url, description: '' }
-      currentCategory.technologies.push(currentTech)
+      const linkText: any = link.children[0]
+      currentTech = {
+        name: linkText.value,
+        url: link.url,
+        description: '',
+      }
+      currentCategory!.technologies.push(currentTech)
     }
-  } else if (node.type === 'paragraph' && currentTech) {
-    currentTech.description = node.children[0].value
+  }
+ else if (node.type === 'paragraph' && currentTech) {
+    const textNode: any = node.children[0]
+    currentTech.description = textNode.value ?? ''
     currentTech = null
   }
 })
@@ -45,7 +73,7 @@ visit(tree, (node) => {
   </Lead>
   <div class="mt-6 space-y-6">
     {
-      categories.map(category => (
+      categories.map((category: Category) => (
         <div>
           <H2>{category.name}</H2>
           <div
@@ -55,18 +83,27 @@ visit(tree, (node) => {
               lg:grid-cols-3
             `}
           >
-            {category.technologies.map(tech => (
+            {category.technologies.map((tech: Technology) => (
               <a
                 href={tech.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 class={`
-                  block rounded-lg border bg-card p-6 transition-shadow
+                  transition-shadow
                   hover:shadow-lg
                 `}
               >
-                <h3 class="mb-2 text-2xl font-bold">{tech.name}</h3>
-                <p class="text-muted-foreground">{tech.description}</p>
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle>{tech.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <CardDescription>
+                      {tech.description}
+                      <p class="mt-3 break-all text-primary">{tech.url}</p>
+                    </CardDescription>
+                  </CardContent>
+                </Card>
               </a>
             ))}
           </div>
