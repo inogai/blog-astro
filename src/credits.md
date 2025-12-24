@@ -2,7 +2,7 @@
 
 ### [Astro](https://astro.build/)
 
-Very cool meta-framework with a neat way of isolating client/server components.
+SSG/SSR-oriented meta-framework. Allows mixing multiple frameworks.
 
 ### [React](https://react.dev/)
 
@@ -12,7 +12,7 @@ Good old React, because why not?
 
 ### [shadcn/ui](https://ui.shadcn.com/)
 
-Cool components built with Radix UI and Tailwind CSS.
+Pastable components built with Tailwind CSS.
 
 ### [tweak-cn](https://tweakcn.com/)
 
@@ -20,21 +20,27 @@ Like this paper-ish colorscheme? Me too.
 
 ## Fonts
 
-### [Google Fonts](https://fonts.google.com/)
+### [Fontsource](https://fontsource.org/)
 
-Free web font hosting by Google.
+Another way to deliver fonts with your app.
 
-### [Inter](https://fonts.google.com/specimen/Inter)
+<!-- ### [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) -->
+<!---->
+<!-- Monospace font. Very cool. Also checkout Lilex. -->
 
-Neat sans-serif font for the main text.
+### [GNU Unifont](https://unifoundry.com/unifont/index.html)
 
-### [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+Bitmap font. Wide coverage of Unicode characters.
 
-Monospace font for code snippets.
+## Icons
 
-### [Lucide Icons](https://lucide.dev/)
+### [Astro Icon](https://www.astroicon.dev/)
 
-These icons you see everywhere? From Lucide.
+Astro integration for iconify.design.
+
+### [Dinkie Icons](https://dinkiebitmap.com/icons)
+
+Bitmap style icons. Very cute.
 
 ## Tooling
 
