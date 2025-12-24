@@ -2,6 +2,13 @@
 import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Link from '@/components/Link.astro'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { H1, H2, Lead as Muted } from '@/components/ui/typography'
 import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
@@ -28,18 +35,25 @@ const posts = (await getCollection('blog')).sort(
       <Link
         href={`/blog/${id}/`}
         class={`
-          mt-6 block rounded-lg border bg-card p-6 transition-shadow
+          mt-6 block transition-shadow
           hover:shadow-lg
         `}
       >
-        <div class="flex items-center justify-between">
-          <h3 class="mb-2 text-2xl font-bold">{title}</h3>
-          <Icon name="dinkie-icons:right-arrow-circled-filled" class="size-6" />
-        </div>
-        <Muted className="mt-2">{description}</Muted>
-        <Muted className="mt-2 text-sm">
-          {new Date(date).toLocaleDateString()}
-        </Muted>
+        <Card className="h-full">
+          <CardHeader className="flex items-center justify-between">
+            <CardTitle className="text-2xl">{title}</CardTitle>
+            <Icon
+              name="dinkie-icons:right-arrow-circled-filled"
+              class="size-6"
+            />
+          </CardHeader>
+          <CardContent>
+            <CardDescription>{description}</CardDescription>
+            <Muted className="mt-2 text-sm">
+              {new Date(date).toLocaleDateString()}
+            </Muted>
+          </CardContent>
+        </Card>
       </Link>
     ))
   }
