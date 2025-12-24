@@ -1,8 +1,9 @@
 // @ts-check
-
+import alpine from '@astrojs/alpinejs'
 import react from '@astrojs/react'
 import remarkCallout from '@r4ai/remark-callout'
 import tailwindcss from '@tailwindcss/vite'
+import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
 import remarkGfm from 'remark-gfm'
 import remarkWikiLink from 'remark-wiki-link'
@@ -22,13 +23,17 @@ export default defineConfig({
       remarkGfm,
       remarkCjkWrap,
       remarkCallout,
-      [remarkWikiLink, {
-        aliasDivider: '|',
-        /** @type { (permalink: string) => string } */
-        hrefTemplate: permalink => `./${permalink.slice(7)}`,
-      }],
+      [
+        remarkWikiLink,
+        {
+          aliasDivider: '|',
+          /** @type { (permalink: string) => string } */
+          hrefTemplate: permalink => `./${permalink.slice(7)}`,
+        },
+      ],
     ],
   },
 
-  integrations: [react()],
+  integrations: [react(), alpine(), icon()],
 })
+

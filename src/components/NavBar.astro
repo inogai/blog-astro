@@ -1,45 +1,61 @@
 ---
-import Logo from '@/components/icons/Logo.astro'
-import LanguageSwitcher from '@/components/LanguageSwitcher.astro'
-import Link from '@/components/Link.astro'
-import NavLink from '@/components/NavLink.astro'
+import { Icon } from 'astro-icon/components'
+import NavigationMenu from '@/components/ui/NavigationMenu.astro'
+import NavigationMenuLink from '@/components/ui/NavigationMenuLink.astro'
+import NavigationMenuList from '@/components/ui/NavigationMenuList.astro'
+
 import { t } from '@/i18n/ui'
 
 const locale = Astro.params.locale || 'en'
+const nextLocale = locale === 'en' ? 'zh' : 'en'
+const nextLocaleIcon = {
+  en: 'dinkie-icons:language-latin',
+  zh: 'dinkie-icons:language-han',
+}[nextLocale]
+
+const currentPath = Astro.url.pathname
+const isActive = (href: string) => href === currentPath
 ---
 
-<header class="sticky top-0 flex h-12 border-b bg-background">
-  <Link
-    href="/"
+<header class="sticky top-0 z-50 w-full bg-background">
+  <div
     class={`
-      ml-4 flex items-center
-      hover:opacity-50
+      flex h-(--header-height) items-center px-3
+      lg:px-6
     `}
   >
-    <span class="text-primary">
-      <Logo />
-    </span>
-    <span class="ml-2 font-mono font-bold">{t('navbar.name')}</span>
-    <span
-      class={`
-        ml-1 hidden text-sm font-light text-muted-foreground
-        md:block
-      `}
-    >
-      {t('navbar.subtitle')}
-    </span>
-  </Link>
+    inogai
+    <div class="flex-1"></div>
+    <NavigationMenu class="gap-0">
+      <NavigationMenuList>
+        <NavigationMenuLink
+          href={`/${locale}/`}
+          active={isActive(`/${locale}/`)}
+        >
+          {t('nav.home')}
+        </NavigationMenuLink>
 
-  <div class="flex-1"></div>
+        <NavigationMenuLink
+          href={`/${locale}/blog/`}
+          active={isActive(`/${locale}/blog/`)}
+        >
+          {t('nav.blog')}
+        </NavigationMenuLink>
 
-  <div class="flex items-center">
-    <LanguageSwitcher />
+        <NavigationMenuLink
+          href={`/${locale}/credits/`}
+          active={isActive(`/${locale}/credits/`)}
+        >
+          {t('nav.credits')}
+        </NavigationMenuLink>
 
-    <NavLink href={`/${locale}/`}>
-      <span class="font-bold">{t('nav.home')}</span>
-    </NavLink>
-    <NavLink href={`/${locale}/blog/`}>{t('nav.blog')}</NavLink>
-    <!-- <NavLink href="/timeline/">Timeline</NavLink> -->
-    <NavLink href={`/${locale}/credits/`}>{t('nav.credits')}</NavLink>
+        <NavigationMenuLink
+          href={`/${nextLocale}/`}
+          active={isActive(`/${nextLocale}/`)}
+        >
+          <Icon name={nextLocaleIcon} />
+        </NavigationMenuLink>
+      </NavigationMenuList>
+    </NavigationMenu>
   </div>
 </header>

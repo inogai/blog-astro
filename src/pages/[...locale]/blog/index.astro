@@ -1,5 +1,5 @@
 ---
-import { ArrowRight } from '@lucide/astro'
+import { Icon } from 'astro-icon/components'
 import { getCollection } from 'astro:content'
 import Link from '@/components/Link.astro'
 import { H1, H2, Lead as Muted } from '@/components/ui/typography'
@@ -34,7 +34,7 @@ const posts = (await getCollection('blog')).sort(
       >
         <div class="flex items-center justify-between">
           <h3 class="mb-2 text-2xl font-bold">{title}</h3>
-          <ArrowRight class="inline-block size-8" />
+          <Icon name="dinkie-icons:right-arrow-circled-filled" class="size-6" />
         </div>
         <Muted className="mt-2">{description}</Muted>
         <Muted className="mt-2 text-sm">

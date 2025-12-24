@@ -19,7 +19,7 @@ const locale = Astro.params.locale || ''
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}{t('title.suffix')}</title>
   </head>
-  <body>
+  <body class="dark">
     <div class="flex min-h-screen flex-col">
       <NavBar />
       <slot />
