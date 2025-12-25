@@ -1,16 +1,19 @@
 ---
+import { Kbd } from '@/components/ui/kbd'
 import { cn } from '@/lib/utils'
 
 interface Props {
   class?: string
   href?: string
   active?: boolean
+  key?: string
 }
 
 const {
   class: className,
   href,
   active = false,
+  key,
   ...props
 } = Astro.props satisfies Props
 ---
@@ -19,6 +22,7 @@ const {
   data-slot="navigation-menu-link"
   href={href}
   data-active={active ? '' : undefined}
+  data-nav-menu-key={key}
   class={cn(
     `
       flex items-center gap-2 rounded-none p-2 text-sm transition-all
@@ -36,4 +40,5 @@ const {
   {...props}
 >
   <slot />
+  {key && <Kbd className="hidden md:inline-flex">{key}</Kbd>}
 </a>

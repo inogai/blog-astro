@@ -25,6 +25,10 @@ export default antfu(
         'error',
         { detectComponentClasses: true },
       ],
+      'better-tailwindcss/enforce-consistent-line-wrapping': [
+        'warn',
+        { preferSingleLine: true },
+      ],
     },
     settings: {
       'better-tailwindcss': {

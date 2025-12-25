@@ -17,45 +17,51 @@ const currentPath = Astro.url.pathname
 const isActive = (href: string) => href === currentPath
 ---
 
-<header class="sticky top-0 z-50 w-full bg-background">
-  <div
-    class={`
-      flex h-(--header-height) items-center px-3
-      lg:px-6
-    `}
-  >
-    inogai
-    <div class="flex-1"></div>
-    <NavigationMenu class="gap-0">
-      <NavigationMenuList>
-        <NavigationMenuLink
-          href={`/${locale}/`}
-          active={isActive(`/${locale}/`)}
-        >
-          {t('nav.home')}
-        </NavigationMenuLink>
+<div>
+  <header class="sticky top-0 z-50 w-full bg-background">
+    <div
+      class={`
+        flex h-(--header-height) items-center px-3
+        lg:px-6
+      `}
+    >
+      inogai
+      <div class="flex-1"></div>
+      <NavigationMenu class="gap-0">
+        <NavigationMenuList>
+          <NavigationMenuLink
+            href={`/${locale}/`}
+            active={isActive(`/${locale}/`)}
+            key="1"
+          >
+            {t('nav.home')}
+          </NavigationMenuLink>
 
-        <NavigationMenuLink
-          href={`/${locale}/blog/`}
-          active={isActive(`/${locale}/blog/`)}
-        >
-          {t('nav.blog')}
-        </NavigationMenuLink>
+          <NavigationMenuLink
+            href={`/${locale}/blog/`}
+            active={isActive(`/${locale}/blog/`)}
+            key="2"
+          >
+            {t('nav.blog')}
+          </NavigationMenuLink>
 
-        <NavigationMenuLink
-          href={`/${locale}/credits/`}
-          active={isActive(`/${locale}/credits/`)}
-        >
-          {t('nav.credits')}
-        </NavigationMenuLink>
+          <NavigationMenuLink
+            href={`/${locale}/credits/`}
+            active={isActive(`/${locale}/credits/`)}
+            key="3"
+          >
+            {t('nav.credits')}
+          </NavigationMenuLink>
 
-        <NavigationMenuLink
-          href={`/${nextLocale}/`}
-          active={isActive(`/${nextLocale}/`)}
-        >
-          <Icon name={nextLocaleIcon} />
-        </NavigationMenuLink>
-      </NavigationMenuList>
-    </NavigationMenu>
-  </div>
-</header>
+          <NavigationMenuLink
+            href={`/${nextLocale}/`}
+            active={isActive(`/${nextLocale}/`)}
+            key="4"
+          >
+            <Icon name={nextLocaleIcon} />
+          </NavigationMenuLink>
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
+  </header>
+</div>

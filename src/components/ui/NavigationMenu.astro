@@ -4,12 +4,41 @@ import { cn } from '@/lib/utils'
 const { className } = Astro.props
 ---
 
-<div
+<nav
+  role="navigation"
   data-slot="navigation-menu"
+  x-data="{
+    init() {
+      this.$nextTick(() => {
+        this.updateKeyMap();
+      });
+    },
+    updateKeyMap() {
+      this.keyMap = {};
+      const links = this.$el.querySelectorAll('[data-nav-menu-key]');
+      links.forEach(link => {
+        const key = link.getAttribute('data-nav-menu-key');
+        if (key) {
+          this.keyMap[key] = link;
+        }
+      });
+    },
+    keyMap: {},
+    handleKeydown(event) {
+      const link = this.keyMap[event.key];
+      if (link) {
+        link.click();
+      }
+    }
+  }"
+  @keydown.window="handleKeydown($event)"
   class={cn(
-    'group/navigation-menu relative flex max-w-max flex-1 items-center justify-center',
+    `
+      group/navigation-menu relative flex max-w-max flex-1 items-center
+      justify-center
+    `,
     className,
   )}
 >
   <slot />
-</div>
+</nav>
