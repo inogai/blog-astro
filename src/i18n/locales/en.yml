@@ -2,7 +2,7 @@ nav:
   home: Home
   blog: Blog
   credits: Credits
-  language: Select Language
+  language: 繁體中文
 home:
   title: I am Alex Chen and I do code
   subtitle: inogai
@@ -19,6 +19,11 @@ credits:
   description: This site is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
 navbar:
   name: inogai,
-  subtitle: an UG at HKUST
+  shortcuts: Shortcuts
+  shortcutsTitle: Keyboard Shortcuts
+  navigationShortcuts: Navigation
+  otherShortcuts: Other
+  toggleShortcuts: Toggle shortcuts
+  closeModal: Close modal
 title:
   suffix: ' | inogai'

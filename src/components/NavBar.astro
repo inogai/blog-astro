@@ -1,5 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components'
+import HelpModal from '@/components/HelpModal.astro'
 import NavigationMenu from '@/components/ui/NavigationMenu.astro'
 import NavigationMenuLink from '@/components/ui/NavigationMenuLink.astro'
 import NavigationMenuList from '@/components/ui/NavigationMenuList.astro'
@@ -19,14 +20,10 @@ const isActive = (href: string) => href === currentPath
 
 <div>
   <header class="sticky top-0 z-50 w-full bg-background">
-    <div
-      class={`
-        flex h-(--header-height) items-center px-3
-        lg:px-6
-      `}
-    >
+    <div class="flex h-(--header-height) items-center px-3 lg:px-6">
       inogai
       <div class="flex-1"></div>
+      <HelpModal />
       <NavigationMenu class="gap-0">
         <NavigationMenuList>
           <NavigationMenuLink
@@ -59,6 +56,7 @@ const isActive = (href: string) => href === currentPath
             key="4"
           >
             <Icon name={nextLocaleIcon} />
+            {t('nav.language')}
           </NavigationMenuLink>
         </NavigationMenuList>
       </NavigationMenu>

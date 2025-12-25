@@ -2,7 +2,7 @@ nav:
   home: 首頁
   blog: 部落格
   credits: 致謝
-  language: 選擇語言
+  language: English
 home:
   title: I am Alex Chen and I do code.
   subtitle: inogai
@@ -18,7 +18,12 @@ credits:
   title: 致謝
 navbar:
   name: inogai,
-  subtitle: an UG at HKUST
+  shortcuts: 快捷鍵
+  shortcutsTitle: 鍵盤快捷鍵
+  navigationShortcuts: 導航
+  otherShortcuts: 其他
+  toggleShortcuts: 開啟快捷鍵
+  closeModal: 關閉彈窗
 breadcrumb:
   home: 首頁
 title:

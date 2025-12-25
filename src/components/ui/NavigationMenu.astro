@@ -28,8 +28,9 @@ const { className } = Astro.props
       const link = this.keyMap[event.key];
       if (link) {
         link.click();
+        return;
       }
-    }
+    },
   }"
   @keydown.window="handleKeydown($event)"
   class={cn(
