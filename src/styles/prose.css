@@ -56,12 +56,12 @@
       @apply my-6 ml-6 list-disc [&>li]:mt-2;
     }
 
-    /* co-operate with shiki */
+    /* Multi-line Code: co-operate with shiki */
     pre.astro-code {
-      @apply /* bg-muted */ relative rounded px-4 py-2 font-mono text-sm font-semibold;
+      @apply /* bg-muted */ relative rounded-sm px-4 py-2 font-mono text-sm font-semibold [&:not(:first-child)]:mt-6;
     }
 
-    /* align with shiki colors */
+    /* Inline code: align with shiki colors */
     :not(pre) > code {
       @apply bg-[#24292e] text-[#e1e4e8] relative rounded px-[0.3rem] py-[0.1rem] font-mono text-sm font-semibold;
     }

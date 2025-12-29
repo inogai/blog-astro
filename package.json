@@ -13,6 +13,7 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/mdx": "^4.3.6",
     "@astrojs/react": "^4.4.0",
+    "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/unifont": "^5.2.5",
     "@r4ai/remark-callout": "^0.6.2",
     "@radix-ui/react-slot": "^1.2.4",
