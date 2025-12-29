@@ -26,7 +26,7 @@ MCP 定義了三種不同的 API：stdio, StreamableHTTP, SSE (Server-Sent Event
 然而，許多 MCP Server 是針對市面上常見的 AI Agent 工具使用的。它們中的一些只提供
 了一行 json 文件，例如官方的[`@modelcontextprotocol/filesystem`][filesystem]
 
-```json
+```json title="mcp.json"
 {
   "servers": {
     "filesystem": {
@@ -94,7 +94,7 @@ npx -y supergateway --stdio "npx -y @modelcontextprotocol/filesystem" --outputTr
 但把它們轉換為 stdio one-liner 可以提升一致性，並容許不支持上述模式的 agent 運行
 我們的設定檔案。
 
-```json
+```json title="mcp.json"
 {
   "servers": {
     "filesystem": {
@@ -127,7 +127,7 @@ npx -y supergateway --stdio "npx -y @modelcontextprotocol/filesystem" --outputTr
 為了讓部署更簡單，我們可以將 Supergateway 包裝在 Docker Compose 設定中。這對於檔
 案系統存取特別有用 —— 我們可以控制要掛載哪些目錄，而不需要 LLM 記住長路徑。
 
-```yaml
+```yaml title="compose.yml"
 services:
   filesystem:
     image: supercorp/supergateway
@@ -149,7 +149,7 @@ Docker Compose 會自動建立 bridge 網路，因此同一個 compose 檔案中
 
 這是一個完整的 compose.yml，它設定了 n8n 和 `filesystem` MCP Server.
 
-```yaml
+```yaml title="compose.yml"
 services:
   n8n:
     image: docker.n8n.io/n8nio/n8n

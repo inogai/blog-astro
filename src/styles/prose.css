@@ -56,14 +56,14 @@
       @apply my-6 ml-6 list-disc [&>li]:mt-2;
     }
 
-    /* Multi-line Code: co-operate with shiki */
-    pre.astro-code {
-      @apply /* bg-muted */ relative rounded-sm px-4 py-2 font-mono text-sm font-semibold [&:not(:first-child)]:mt-6;
+    /* Block Code: Expressive Code */
+    div.expressive-code {
+      @apply font-mono [&:not(:first-child)]:mt-6;
     }
 
-    /* Inline code: align with shiki colors */
-    :not(pre) > code {
-      @apply bg-[#24292e] text-[#e1e4e8] relative rounded px-[0.3rem] py-[0.1rem] font-mono text-sm font-semibold;
+    /* Inline code */
+    code {
+      @apply bg-secondary text-secondary-foreground relative rounded-sm px-[0.3rem] py-[0.1rem] font-mono text-sm font-semibold;
     }
 
     a {

@@ -1,8 +1,10 @@
 // @ts-check
 import alpine from '@astrojs/alpinejs'
 import react from '@astrojs/react'
+import { pluginLineNumbers as ecPluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import remarkCallout from '@r4ai/remark-callout'
 import tailwindcss from '@tailwindcss/vite'
+import expressiveCode from 'astro-expressive-code'
 import icon from 'astro-icon'
 import { defineConfig } from 'astro/config'
 import remarkGfm from 'remark-gfm'
@@ -34,6 +36,17 @@ export default defineConfig({
     ],
   },
 
-  integrations: [react(), alpine(), icon()],
+  integrations: [
+    expressiveCode({
+      plugins: [
+        ecPluginLineNumbers(),
+      ],
+      defaultProps: {
+        frame: 'code',
+      },
+    }),
+    react(),
+    alpine(),
+    icon(),
+  ],
 })
-
