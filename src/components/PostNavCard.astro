@@ -1,0 +1,66 @@
+---
+import { Icon } from 'astro-icon/components'
+import Link from '@/components/Link.astro'
+import { t } from '@/i18n/ui'
+import { cn } from '@/lib/utils'
+import { cva } from 'class-variance-authority'
+
+interface Props {
+  post: any
+  direction: 'prev' | 'next'
+}
+
+const { post, direction } = Astro.props
+
+const cardClasses = cva(
+  `
+    flex flex-1 flex-col rounded-lg border bg-secondary p-4 transition-colors
+    hover:bg-secondary/80
+  `,
+  {
+    variants: {
+      align: {
+        left: 'items-start',
+        right: 'items-end',
+      },
+      inactive: {
+        true: 'text-foreground/60',
+      },
+    },
+  },
+)
+
+const labelClasses = cn(
+  'flex items-center gap-2 text-sm text-secondary-foreground/60',
+)
+
+const titleClasses = cn('mt-2 font-medium')
+
+const align = direction === 'prev' ? 'left' : 'right'
+const icon = direction === 'prev' ? 'mdi:arrow-left' : 'mdi:arrow-right'
+const label = direction === 'prev' ? t('blog.prevPost') : t('blog.nextPost')
+const noPostLabel =
+  direction === 'prev' ? t('blog.noPrevPost') : t('blog.noNextPost')
+---
+
+{
+  post ? (
+    <Link href={`/blog/${post.data.id}/`} class={cardClasses({ align })}>
+      <div class={labelClasses}>
+        {direction === 'prev' && <Icon name={icon} class="size-4" />}
+        <span>{label}</span>
+        {direction === 'next' && <Icon name={icon} class="size-4" />}
+      </div>
+      <span class={titleClasses}>{post.data.title}</span>
+    </Link>
+  ) : (
+    <div class={cardClasses({ align, inactive: true })}>
+      <div class={labelClasses}>
+        {direction === 'prev' && <Icon name={icon} class="size-4" />}
+        <span>{label}</span>
+        {direction === 'next' && <Icon name={icon} class="size-4" />}
+      </div>
+      <span class={titleClasses}>{noPostLabel}</span>
+    </div>
+  )
+}

@@ -14,6 +14,10 @@ blog:
   created: '創建於： '
   updated: '更新於： '
   tableOfContents: 目錄
+  prevPost: 前一篇
+  nextPost: 後一篇
+  noPrevPost: 已經在最前面啦~
+  noNextPost: 已經到最後面啦~
 credits:
   title: 致謝
 navbar:

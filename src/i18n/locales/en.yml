@@ -14,6 +14,10 @@ blog:
   created: 'Created: '
   updated: 'Updated: '
   tableOfContents: Table of Contents
+  prevPost: Previous
+  nextPost: Next
+  noPrevPost: You are at the beginning of the blogs.
+  noNextPost: You are at the end of the blogs.
 credits:
   title: Credits
   description: This site is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
