@@ -1,12 +1,13 @@
 ---
+import type { BlogPost } from '@/types/BlogPost'
 import { Icon } from 'astro-icon/components'
+import { cva } from 'class-variance-authority'
 import Link from '@/components/Link.astro'
 import { t } from '@/i18n/ui'
 import { cn } from '@/lib/utils'
-import { cva } from 'class-variance-authority'
 
 interface Props {
-  post: any
+  post: BlogPost | null
   direction: 'prev' | 'next'
 }
 
@@ -39,12 +40,13 @@ const titleClasses = cn('mt-2 font-medium')
 const align = direction === 'prev' ? 'left' : 'right'
 const icon = direction === 'prev' ? 'mdi:arrow-left' : 'mdi:arrow-right'
 const label = direction === 'prev' ? t('blog.prevPost') : t('blog.nextPost')
-const noPostLabel =
-  direction === 'prev' ? t('blog.noPrevPost') : t('blog.noNextPost')
+const noPostLabel
+  = direction === 'prev' ? t('blog.noPrevPost') : t('blog.noNextPost')
 ---
 
 {
-  post ? (
+  post
+? (
     <Link href={`/blog/${post.data.id}/`} class={cardClasses({ align })}>
       <div class={labelClasses}>
         {direction === 'prev' && <Icon name={icon} class="size-4" />}
@@ -53,7 +55,8 @@ const noPostLabel =
       </div>
       <span class={titleClasses}>{post.data.title}</span>
     </Link>
-  ) : (
+  )
+: (
     <div class={cardClasses({ align, inactive: true })}>
       <div class={labelClasses}>
         {direction === 'prev' && <Icon name={icon} class="size-4" />}

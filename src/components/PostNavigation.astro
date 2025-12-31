@@ -1,15 +1,16 @@
 ---
-import PostNavCard from './PostNavCard.astro'
+import type { BlogPost } from '@/types/BlogPost'
+import PostNavigationCard from '@/components/PostNavCard.astro'
 
 interface Props {
-  prevPost: any
-  nextPost: any
+  prevPost: BlogPost | null
+  nextPost: BlogPost | null
 }
 
 const { prevPost, nextPost } = Astro.props
 ---
 
 <nav class="mt-12 flex justify-between gap-4 border-t pt-8">
-  <PostNavCard post={prevPost} direction="prev" />
-  <PostNavCard post={nextPost} direction="next" />
+  <PostNavigationCard post={prevPost} direction="prev" />
+  <PostNavigationCard post={nextPost} direction="next" />
 </nav>
