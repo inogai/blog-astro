@@ -15,4 +15,31 @@ const blog = defineCollection({
   }),
 })
 
-export const collections = { blog }
+const projects = defineCollection({
+  loader: glob({
+    pattern: '*.md',
+    base: './src/projects/',
+  }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    techStack: z.array(z.string()),
+    category: z.enum([
+      'neovim', // Neovim & Editor
+      'web', // Web Applications
+      'systems', // Systems & CLI
+      'iot', // IoT & Hardware
+      'devtools', // DevTools & Infrastructure
+      'deeplearning', // Deep Learning & AI
+      'geek', // Geek & Fun Projects
+    ]),
+    github: z.string().url().optional(),
+    demo: z.string().url().optional(),
+    image: z.string().optional(),
+    featured: z.boolean().default(false),
+    status: z.enum(['active', 'maintained', 'archived']).default('active'),
+    order: z.number().default(0), // For manual ordering within category
+  }),
+})
+
+export const collections = { blog, projects }

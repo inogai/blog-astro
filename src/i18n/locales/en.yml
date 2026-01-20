@@ -1,6 +1,7 @@
 nav:
   home: Home
   blog: Blog
+  projects: Projects
   credits: Credits
   language: 繁體中文
 home:
@@ -21,6 +22,19 @@ blog:
 credits:
   title: Credits
   description: This site is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.
+projects:
+  title: Projects
+  subtitle: Things I've built and contributed to.
+  empty: No projects yet. Check back soon!
+  backToProjects: Back to projects
+  categories:
+    neovim: Neovim & Editor
+    web: Web Applications
+    systems: Systems & CLI
+    iot: IoT & Hardware
+    devtools: DevTools & Infrastructure
+    deeplearning: Deep Learning & AI
+    geek: Geek & Fun Projects
 navbar:
   name: inogai,
   shortcuts: Shortcuts

@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content'
+import CategoryDivider from '@/components/projects/CategoryDivider.astro'
+import ProjectItem from '@/components/projects/ProjectItem.astro'
+import { H1, Lead as Muted } from '@/components/ui/typography'
+import { t } from '@/i18n/ui'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths } from '@/lib/i18n-utils'
+import { categoryOrder, type ProjectCategory } from '@/types/Project'
+
+export async function getStaticPaths() {
+  return getI18nStaticPaths()
+}
+
+const allProjects = await getCollection('projects')
+
+// Group projects by category
+const projectsByCategory = allProjects.reduce(
+  (acc, project) => {
+    const category = project.data.category
+    if (!acc[category]) {
+      acc[category] = []
+    }
+    acc[category].push(project)
+    return acc
+  },
+  {} as Record<ProjectCategory, typeof allProjects>,
+)
+
+// Sort projects within each category by order, then by featured
+for (const category of Object.keys(projectsByCategory) as ProjectCategory[]) {
+  projectsByCategory[category].sort((a, b) => {
+    // Featured first
+    if (a.data.featured !== b.data.featured) {
+      return a.data.featured ? -1 : 1
+    }
+    // Then by order
+    return a.data.order - b.data.order
+  })
+}
+
+// Get categories that have projects, in the defined order
+const categoriesWithProjects = categoryOrder.filter(
+  cat => projectsByCategory[cat]?.length > 0,
+)
+---
+
+<BaseLayout title={t('projects.title')}>
+  <H1>{t('projects.title')}</H1>
+  <Muted className="mt-6">
+    {t('projects.subtitle')}
+  </Muted>
+
+  <div class="mt-8 space-y-2">
+    {
+      categoriesWithProjects.map(category => (
+        <section>
+          <CategoryDivider label={t(`projects.categories.${category}`)} />
+          <div class="space-y-1">
+            {projectsByCategory[category].map(project => (
+              <ProjectItem
+                project={project}
+                showDetailLink={project.data.featured}
+              />
+            ))}
+          </div>
+        </section>
+      ))
+    }
+
+    {
+      categoriesWithProjects.length === 0 && (
+        <p class="text-muted-foreground py-8 text-center">
+          {t('projects.empty')}
+        </p>
+      )
+    }
+  </div>
+</BaseLayout>

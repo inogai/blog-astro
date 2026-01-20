@@ -1,0 +1,17 @@
+---
+interface Props {
+  items: string[]
+  class?: string
+}
+
+const { items, class: className } = Astro.props
+---
+
+<span class:list={['text-sm text-muted-foreground', className]}>
+  {items.map((item, i) => (
+    <>
+      <span class="inline-block">{item}</span>
+      {i < items.length - 1 && <span class="mx-1.5">·</span>}
+    </>
+  ))}
+</span>

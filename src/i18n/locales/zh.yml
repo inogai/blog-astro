@@ -1,6 +1,7 @@
 nav:
   home: 首頁
   blog: 部落格
+  projects: 項目
   credits: 致謝
   language: English
 home:
@@ -20,6 +21,19 @@ blog:
   noNextPost: 已經到最後面啦~
 credits:
   title: 致謝
+projects:
+  title: 項目
+  subtitle: 我構建和貢獻的項目。
+  empty: 暫無項目，敬請期待！
+  backToProjects: 返回項目列表
+  categories:
+    neovim: Neovim 與編輯器
+    web: Web 應用
+    systems: 系統與命令行
+    iot: 物聯網與硬件
+    devtools: 開發工具與基礎設施
+    deeplearning: 深度學習與 AI
+    geek: 極客與趣味項目
 navbar:
   name: inogai,
   shortcuts: 快捷鍵
