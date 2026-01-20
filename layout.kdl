@@ -1,0 +1,21 @@
+layout {
+    pane size=1 borderless=true {
+        plugin location="tab-bar"
+    }
+    pane split_direction="vertical" { // panes can have nested panes
+        pane stacked=true {
+            pane
+            pane command="opencode" {
+            }
+        }
+        pane command="direnv" {
+            args "exec" "." "pnpm" "dev"
+        }
+    }
+    plugin location="zellij:compact-bar" {
+      tooltip "F1"
+    }
+    pane size=1 borderless=true {
+        plugin location="status-bar"
+    }
+}
