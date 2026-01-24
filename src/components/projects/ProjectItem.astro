@@ -9,8 +9,8 @@ interface Props {
 }
 
 const { project, showDetailLink = false } = Astro.props
-const { title, description, techStack, github, demo, featured, status } =
-  project.data
+const { title, description, techStack, github, demo, featured, status, image }
+  = project.data
 
 const locale = Astro.params.locale || 'en'
 const detailHref = `/${locale}/projects/${project.id}/`
@@ -26,9 +26,10 @@ const primaryLink = showDetailLink ? detailHref : github || demo
   class:list={[
     'group -mx-3 block rounded-lg px-3 py-4 transition-colors',
     'hover:bg-muted/50',
+    'relative overflow-hidden',
   ]}
 >
-  <div class="flex items-start justify-between gap-4">
+  <div class="relative z-10 flex items-start justify-between gap-4">
     <div class="min-w-0 flex-1">
       <div class="flex items-center gap-2">
         <h3 class="text-lg font-medium group-hover:underline">
@@ -67,7 +68,10 @@ const primaryLink = showDetailLink ? detailHref : github || demo
           github && (
             <button
               onclick={`event.stopPropagation(); window.open('${github}', '_blank')`}
-              class="text-muted-foreground hover:text-foreground bg-transparent border-0 p-0 cursor-pointer"
+              class={`
+                cursor-pointer border-0 bg-transparent p-0 text-muted-foreground
+                hover:text-foreground
+              `}
               title="GitHub Repository"
             >
               <Icon name="mdi:github" class="size-4" />
@@ -89,12 +93,33 @@ const primaryLink = showDetailLink ? detailHref : github || demo
       `}
     >
       {
-        showDetailLink ? (
+        showDetailLink
+? (
           <Icon name="mdi:chevron-right" class="size-5" />
-        ) : (
+        )
+: (
           <Icon name="mdi:arrow-top-right" class="size-5" />
         )
       }
     </div>
   </div>
+  {
+    image && (
+      <div class="pointer-events-none absolute inset-0 z-0 hidden md:block">
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
+          class="absolute top-0 right-24 bottom-0 h-full w-24 object-cover"
+        />
+        <div
+          class="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(to left, transparent 0%, transparent 50%, hsl(var(--card)) 100%)',
+          }}
+        />
+      </div>
+    )
+  }
 </a>

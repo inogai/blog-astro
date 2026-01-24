@@ -9,6 +9,7 @@ techStack:
   - Voice Recognition
 category: web
 github: https://github.com/inogai/click-tasks-rn
+image: /projects/click-tasks.png
 featured: true
 status: archived
 order: 3

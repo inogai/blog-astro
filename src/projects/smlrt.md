@@ -10,6 +10,7 @@ techStack:
 category: web
 github: https://github.com/inogai/smlrt3
 featured: true
+image: /projects/smlrt.png
 status: archived
 order: 1
 ---
