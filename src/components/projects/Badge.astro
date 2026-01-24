@@ -1,0 +1,102 @@
+---
+import { Icon } from 'astro-icon/components'
+import { cva } from 'class-variance-authority'
+
+interface BadgeConfig {
+  label: string
+  color: Color
+}
+
+interface CategoryConfig {
+  icon: string
+  label: string
+  color?: Color
+}
+
+interface Props {
+  type: string
+  size?: 'sm' | 'md' | 'lg'
+  class?: string
+  title?: string
+}
+
+const { type, size = 'sm', class: className, title } = Astro.props
+
+const [category, value] = type.split(':')
+
+enum Color {
+  DEFAULT = 'default',
+  GREEN = 'green',
+  AMBER = 'amber',
+  BLUE = 'blue',
+  GRAY = 'gray',
+}
+
+const categories: Record<string, Record<string, BadgeConfig>> = {
+  status: {
+    ongoing: { label: 'Ongoing', color: Color.GREEN },
+    archived: { label: 'Archived', color: Color.GRAY },
+    maintained: { label: 'Maintained', color: Color.BLUE },
+  },
+  featured: {
+    true: { label: 'Featured', color: Color.AMBER },
+  },
+}
+
+const categoryConfig: Record<string, CategoryConfig> = {
+  status: { icon: 'mdi:information-variant', label: 'Status' },
+  featured: { icon: 'mdi:star', label: 'Featured', color: Color.AMBER },
+}
+
+const badgeCva = cva('inline-flex items-center rounded font-medium', {
+  variants: {
+    color: {
+      [Color.DEFAULT]: 'bg-muted text-muted-foreground',
+      [Color.GREEN]:
+        'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400',
+      [Color.AMBER]:
+        'bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-400',
+      [Color.BLUE]:
+        'bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400',
+      [Color.GRAY]:
+        'bg-gray-600 text-gray-100 dark:bg-gray-600/30 dark:text-gray-300',
+    },
+    size: {
+      sm: 'gap-x-1 px-1.5 py-0.5 text-xs',
+      md: 'gap-x-1.5 px-2 py-1 text-sm',
+      lg: 'gap-x-2 px-3 py-1.5 text-base',
+    },
+  },
+  defaultVariants: {
+    size: 'sm',
+    color: Color.DEFAULT,
+  },
+})
+
+const iconSizeMap = {
+  sm: 'size-3',
+  md: 'size-4',
+  lg: 'size-5',
+} as const
+
+const config = categories[category]?.[value]
+if (!config) {
+  throw new Error(
+    `Invalid badge type: "${type}". Expected format: "category:value"`,
+  )
+}
+
+const catInfo = categoryConfig[category]
+if (!catInfo) {
+  throw new Error(`Invalid category: "${category}"`)
+}
+---
+
+<span
+  data-badge
+  title={title || `${catInfo.label}: ${config.label}`}
+  class:list={[badgeCva({ color: config.color, size }), className || '']}
+>
+  <Icon name={catInfo.icon} class={iconSizeMap[size]} />
+  <span>{config.label}</span>
+</span>

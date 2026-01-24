@@ -37,7 +37,7 @@ const projects = defineCollection({
     demo: z.string().url().optional(),
     image: z.string().optional(),
     featured: z.boolean().default(false),
-    status: z.enum(['active', 'maintained', 'archived']).default('active'),
+    status: z.enum(['ongoing', 'maintained', 'archived']).default('maintained'),
     order: z.number().default(0), // For manual ordering within category
   }),
 })

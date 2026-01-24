@@ -1,6 +1,8 @@
 ---
 import type { Project } from '@/types/Project'
 import { Icon } from 'astro-icon/components'
+import { buildBadges } from '@/lib/badge-builder'
+import Badge from './Badge.astro'
 import TechStack from './TechStack.astro'
 
 interface Props {
@@ -17,6 +19,11 @@ const detailHref = `/${locale}/projects/${project.id}/`
 
 // Determine the primary link
 const primaryLink = showDetailLink ? detailHref : github || demo
+
+const badges = buildBadges({
+  featured,
+  status,
+})
 ---
 
 <a
@@ -35,49 +42,19 @@ const primaryLink = showDetailLink ? detailHref : github || demo
         <h3 class="text-lg font-medium group-hover:underline">
           {title}
         </h3>
-        {
-          featured && (
-            <span class="text-amber-500" title="Featured">
-              <Icon name="mdi:star" class="size-4" />
-            </span>
-          )
-        }
-        {
-          status === 'archived' && (
-            <span
-              class={`
-                rounded bg-muted px-1.5 py-0.5 text-xs text-muted-foreground
-              `}
-            >
-              Archived
-            </span>
-          )
-        }
-        {
-          status === 'active' && (
-            <span
-              class={`
-                rounded bg-green-100 px-1.5 py-0.5 text-xs text-green-600
-                dark:bg-green-900/30 dark:text-green-400
-              `}
-            >
-              Ongoing
-            </span>
-          )
-        }{
-          github && (
-            <button
-              onclick={`event.stopPropagation(); window.open('${github}', '_blank')`}
-              class={`
-                cursor-pointer border-0 bg-transparent p-0 text-muted-foreground
-                hover:text-foreground
-              `}
-              title="GitHub Repository"
-            >
-              <Icon name="mdi:github" class="size-4" />
-            </button>
-          )
-        }
+        {badges.map(({ type }) => <Badge type={type} />)}
+        {github && (
+          <button
+            onclick={`event.stopPropagation(); window.open('${github}', '_blank')`}
+            class={`
+              cursor-pointer border-0 bg-transparent p-0 text-muted-foreground
+              hover:text-foreground
+            `}
+            title="GitHub Repository"
+          >
+            <Icon name="mdi:github" class="size-4" />
+          </button>
+        )}
       </div>
       <p class="mt-1 line-clamp-2 text-muted-foreground">
         {description}

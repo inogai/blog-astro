@@ -9,7 +9,7 @@ techStack:
   - RAG
 category: deeplearning
 featured: true
-status: active
+status: ongoing
 order: 3
 ---
 
