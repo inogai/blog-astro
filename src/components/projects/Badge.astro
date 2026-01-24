@@ -52,9 +52,9 @@ enum Color {
 
 const categories: Record<string, Record<string, BadgeConfig>> = {
   status: {
-    ongoing: { label: 'Ongoing', color: Color.GREEN },
+    ongoing: { label: 'Ongoing', color: Color.BLUE },
     archived: { label: 'Archived', color: Color.GRAY },
-    maintained: { label: 'Maintained', color: Color.BLUE },
+    maintained: { label: 'Maintained', color: Color.GRAY },
   },
   featured: {
     true: { label: 'Featured', color: Color.AMBER },
@@ -63,7 +63,7 @@ const categories: Record<string, Record<string, BadgeConfig>> = {
     default: { label: 'GitHub', color: Color.GRAY },
   },
   demo: {
-    default: { label: 'Demo', color: Color.BLUE },
+    default: { label: 'Demo', color: Color.GREEN },
   },
 }
 
