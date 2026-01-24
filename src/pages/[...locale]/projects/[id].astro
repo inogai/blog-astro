@@ -1,9 +1,11 @@
 ---
 import { Icon } from 'astro-icon/components'
 import { getCollection, render } from 'astro:content'
+import Badge from '@/components/projects/Badge.astro'
 import TechStack from '@/components/projects/TechStack.astro'
 import { t } from '@/i18n/ui'
 import BaseLayout from '@/layouts/BaseLayout.astro'
+import { buildBadges } from '@/lib/badge-builder'
 import { getI18nStaticPaths } from '@/lib/i18n-utils'
 
 export async function getStaticPaths() {
@@ -21,7 +23,14 @@ export async function getStaticPaths() {
 const { project } = Astro.props
 const { Content } = await render(project)
 
-const { title, description, techStack, github, demo, status } = project.data
+const { title, description, techStack, github, demo, status, featured } = project.data
+
+const badges = buildBadges({
+  featured,
+  status,
+  github,
+  demo,
+})
 ---
 
 <BaseLayout
@@ -37,59 +46,32 @@ const { title, description, techStack, github, demo, status } = project.data
 >
   <article class="max-w-3xl">
     <header class="mb-8">
-      <div class="flex items-center gap-3 mb-4">
+      <div class="mb-4 flex items-center gap-3">
         <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
           {title}
         </h1>
-        {status === 'archived' && (
-          <span class="text-sm text-muted-foreground bg-muted px-2 py-1 rounded">
-            Archived
-          </span>
-        )}
+        {badges.map(({ type }) => <Badge type={type} size="md" />)}
       </div>
 
-      <p class="text-xl text-muted-foreground mb-4">
+      <p class="mb-4 text-xl text-muted-foreground">
         {description}
       </p>
 
-      <div class="flex flex-wrap items-center gap-4">
-        <TechStack items={techStack} />
-
-        <div class="flex gap-3">
-          {github && (
-            <a
-              href={github}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Icon name="mdi:github" class="size-4" />
-              GitHub
-            </a>
-          )}
-          {demo && (
-            <a
-              href={demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Icon name="mdi:open-in-new" class="size-4" />
-              Demo
-            </a>
-          )}
-        </div>
-      </div>
+      <TechStack items={techStack} />
     </header>
 
     <div class="prose max-w-none">
       <Content />
     </div>
 
-    <div class="mt-12 pt-6 border-t">
+    <div class="mt-12 border-t pt-6">
       <a
         href={`/${Astro.params.locale}/projects/`}
-        class="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors"
+        class={`
+          inline-flex items-center gap-1.5 text-sm text-muted-foreground
+          transition-colors
+          hover:text-foreground
+        `}
       >
         <Icon name="mdi:arrow-left" class="size-4" />
         {t('projects.backToProjects')}

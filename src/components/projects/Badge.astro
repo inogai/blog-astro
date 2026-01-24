@@ -39,7 +39,8 @@ function splitOnce(
 const [category, value] = splitOnce(type, ':')
 
 const isGithub = category === 'github'
-const badgeHref = href || (isGithub && value ? value : undefined)
+const isDemo = category === 'demo'
+const badgeHref = href || (isGithub && value ? value : undefined) || (isDemo && value ? value : undefined)
 
 enum Color {
   DEFAULT = 'default',
@@ -61,12 +62,16 @@ const categories: Record<string, Record<string, BadgeConfig>> = {
   github: {
     default: { label: 'GitHub', color: Color.GRAY },
   },
+  demo: {
+    default: { label: 'Demo', color: Color.BLUE },
+  },
 }
 
 const categoryConfig: Record<string, CategoryConfig> = {
   status: { icon: 'mdi:information-variant', label: 'Status' },
   featured: { icon: 'mdi:star', label: 'Featured', color: Color.AMBER },
   github: { icon: 'mdi:github', label: 'GitHub' },
+  demo: { icon: 'mdi:open-in-new', label: 'Demo' },
 }
 
 const badgeCva = cva('inline-flex items-center rounded font-medium', {
@@ -102,6 +107,8 @@ const iconSizeMap = {
 
 const config = isGithub
   ? categories.github?.default
+  : isDemo
+  ? categories.demo?.default
   : categories[category]?.[value]
 
 if (!config) {

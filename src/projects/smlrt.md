@@ -9,6 +9,7 @@ techStack:
   - UnoCSS
 category: web
 github: https://github.com/inogai/smlrt3
+demo: https://inogai.github.io/smlrt3/
 featured: true
 image: /projects/smlrt.png
 status: archived
