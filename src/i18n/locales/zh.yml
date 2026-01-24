@@ -4,6 +4,7 @@ nav:
   projects: 項目
   credits: 致謝
   language: English
+  toggleTheme: 切換主題
 home:
   title: I am Alex Chen and I do code.
   subtitle: inogai

@@ -1,6 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components'
 import HelpModal from '@/components/HelpModal.astro'
+import ThemeToggle from '@/components/ThemeToggle.astro'
 import NavigationMenu from '@/components/ui/NavigationMenu.astro'
 import NavigationMenuLink from '@/components/ui/NavigationMenuLink.astro'
 import NavigationMenuList from '@/components/ui/NavigationMenuList.astro'
@@ -68,6 +69,7 @@ const isActive = (href: string) => href === currentPath
           </NavigationMenuLink>
         </NavigationMenuList>
       </NavigationMenu>
+      <ThemeToggle />
     </div>
   </header>
 </div>

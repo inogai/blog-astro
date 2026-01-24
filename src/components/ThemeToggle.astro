@@ -1,0 +1,45 @@
+---
+import { Icon } from 'astro-icon/components'
+import { t } from '@/i18n/ui'
+import { cn } from '@/lib/utils'
+import { Kbd } from '@/components/ui/kbd.tsx'
+---
+
+<button
+  x-data="{
+    isDark: localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+    toggle() {
+      this.isDark = !this.isDark;
+      document.documentElement.classList.toggle('dark', this.isDark);
+      localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+    },
+    init() {
+      window.addEventListener('keydown', (e) => {
+        if (e.key === '6') {
+          this.toggle();
+        }
+      });
+    },
+  }"
+  @click="toggle()"
+  class={cn(
+    `
+      flex items-center gap-2 rounded p-2 text-sm transition-all outline-none
+      hover:bg-muted hover:underline
+      focus:bg-muted focus:underline
+      focus-visible:ring-1 focus-visible:ring-ring/50 focus-visible:outline-1
+    `,
+  )}
+  aria-label={t('nav.toggleTheme')}
+  title={t('nav.toggleTheme')}
+>
+  <template x-if="isDark">
+    <Icon name="mdi:white-balance-sunny" class="size-4" />
+  </template>
+  <template x-if="!isDark">
+    <Icon name="mdi:moon-waning-crescent" class="size-4" />
+  </template>
+  <span class="hidden md:inline" x-text="isDark ? 'Light' : 'Dark'"></span>
+  <Kbd className="hidden md:inline-flex">6</Kbd>
+</button>
