@@ -23,10 +23,11 @@ const primaryLink = showDetailLink ? detailHref : github || demo
 const badges = buildBadges({
   featured,
   status,
+  github,
 })
 ---
 
-<a
+<article
   href={primaryLink}
   target={showDetailLink ? '_self' : '_blank'}
   rel={showDetailLink ? '' : 'noopener noreferrer'}
@@ -43,18 +44,6 @@ const badges = buildBadges({
           {title}
         </h3>
         {badges.map(({ type }) => <Badge type={type} />)}
-        {github && (
-          <button
-            onclick={`event.stopPropagation(); window.open('${github}', '_blank')`}
-            class={`
-              cursor-pointer border-0 bg-transparent p-0 text-muted-foreground
-              hover:text-foreground
-            `}
-            title="GitHub Repository"
-          >
-            <Icon name="mdi:github" class="size-4" />
-          </button>
-        )}
       </div>
       <p class="mt-1 line-clamp-2 text-muted-foreground">
         {description}
@@ -99,4 +88,4 @@ const badges = buildBadges({
       </div>
     )
   }
-</a>
+</article>

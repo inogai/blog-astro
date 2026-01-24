@@ -18,11 +18,28 @@ interface Props {
   size?: 'sm' | 'md' | 'lg'
   class?: string
   title?: string
+  href?: string
 }
 
-const { type, size = 'sm', class: className, title } = Astro.props
+const { type, size = 'sm', class: className, title, href } = Astro.props
 
-const [category, value] = type.split(':')
+function splitOnce(
+  str: string,
+  delimiter: string,
+): [string, string | undefined] {
+  const index = str.indexOf(delimiter)
+  if (index === -1) {
+    return [str, undefined]
+  }
+  const firstPart = str.slice(0, index)
+  const secondPart = str.slice(index + delimiter.length)
+  return [firstPart, secondPart]
+}
+
+const [category, value] = splitOnce(type, ':')
+
+const isGithub = category === 'github'
+const badgeHref = href || (isGithub && value ? value : undefined)
 
 enum Color {
   DEFAULT = 'default',
@@ -41,11 +58,15 @@ const categories: Record<string, Record<string, BadgeConfig>> = {
   featured: {
     true: { label: 'Featured', color: Color.AMBER },
   },
+  github: {
+    default: { label: 'GitHub', color: Color.GRAY },
+  },
 }
 
 const categoryConfig: Record<string, CategoryConfig> = {
   status: { icon: 'mdi:information-variant', label: 'Status' },
   featured: { icon: 'mdi:star', label: 'Featured', color: Color.AMBER },
+  github: { icon: 'mdi:github', label: 'GitHub' },
 }
 
 const badgeCva = cva('inline-flex items-center rounded font-medium', {
@@ -79,7 +100,10 @@ const iconSizeMap = {
   lg: 'size-5',
 } as const
 
-const config = categories[category]?.[value]
+const config = isGithub
+  ? categories.github?.default
+  : categories[category]?.[value]
+
 if (!config) {
   throw new Error(
     `Invalid badge type: "${type}". Expected format: "category:value"`,
@@ -92,11 +116,33 @@ if (!catInfo) {
 }
 ---
 
-<span
-  data-badge
-  title={title || `${catInfo.label}: ${config.label}`}
-  class:list={[badgeCva({ color: config.color, size }), className || '']}
->
-  <Icon name={catInfo.icon} class={iconSizeMap[size]} />
-  <span>{config.label}</span>
-</span>
+{
+  badgeHref
+  ? (
+    <a
+      data-badge
+      href={badgeHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={title || `${catInfo.label}: ${config.label}`}
+      class:list={[
+        badgeCva({ color: config.color, size }),
+        'cursor-pointer hover:bg-primary/10 hover:underline',
+        className || '',
+      ]}
+    >
+      <Icon name={catInfo.icon} class={iconSizeMap[size]} />
+      <slot>{config.label}</slot>
+    </a>
+  )
+  : (
+    <span
+      data-badge
+      title={title || `${catInfo.label}: ${config.label}`}
+      class:list={[badgeCva({ color: config.color, size }), className || '']}
+    >
+      <Icon name={catInfo.icon} class={iconSizeMap[size]} />
+      <span>{config.label}</span>
+    </span>
+  )
+}
