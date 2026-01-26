@@ -83,6 +83,17 @@ const prevPost = postIdx > 0 ? sortedPosts[postIdx - 1] : null
         <Content />
       </div>
       <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+      <div>
+        <script is:inline>
+        var remark_config = {
+          host: 'https://remark42.inogai.com',
+          site_id: 'remark',
+        }
+        </script>
+        <script is:inline>!(function (e, n) { for (let o = 0; o < e.length; o++) { const r = n.createElement('script'); let c = '.js'; const d = n.head || n.body; 'noModule' in r ? (r.type = 'module', c = '.mjs') : r.async = !0, r.defer = !0, r.src = `${remark_config.host}/web/${e[o]}${c}`, d.appendChild(r) } }(remark_config.components || ['embed'], document))
+        </script>
+        <div id="remark42"></div>
+      </div>
     </article>
   </div>
 </BaseLayout>
