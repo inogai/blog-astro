@@ -14,34 +14,34 @@ import remarkCjkWrap from './src/lib/remarkCjkWrap'
 // Run with `pnpm dev --force` to ignore cache after modifying this file.
 /** @type {{ [key: string]: string }} */
 const iconMap = {
-  'note': 'pencil',
-  'default': 'pencil',
-  'info': 'informationsource-filled',
-  'todo': 'ballot-box-with-check-filled',
-  'abstract': 'clipboard-filled',
-  'summary': 'clipboard-filled',
-  'tl;dr': 'clipboard-filled',
-  'tip': 'fire',
-  'hint': 'fire',
-  'important': 'glowing-star',
-  'success': 'checkmark-circled-filled',
-  'check': 'checkmark-circled-filled',
-  'done': 'checkmark-circled-filled',
-  'question': 'question-face',
-  'help': 'question-face',
-  'faq': 'question-face',
-  'warning': 'alarm-clock-filled',
-  'caution': 'high-voltage-sign',
-  'attention': 'high-voltage-sign',
-  'failure': 'black-cross-square-filled',
-  'fail': 'black-cross-square-filled',
-  'missing': 'black-cross-square-filled',
-  'danger': 'bomb-filled',
-  'error': 'bomb-filled',
-  'bug': 'bug',
-  'example': 'view-list',
-  'quote': 'speech-balloon-small-filled',
-  'cite': 'speech-balloon-small-filled',
+  note: 'dinkie-icons--pencil',
+  default: 'dinkie-icons--pencil',
+  info: 'dinkie-icons--informationsource-filled',
+  todo: 'dinkie-icons--ballot-box-with-check-filled',
+  abstract: 'dinkie-icons--clipboard-filled',
+  summary: 'dinkie-icons--clipboard-filled',
+  'tl;dr': 'dinkie-icons--clipboard-filled',
+  tip: 'dinkie-icons--fire',
+  hint: 'dinkie-icons--fire',
+  important: 'dinkie-icons--glowing-star',
+  success: 'dinkie-icons--checkmark-circled-filled',
+  check: 'dinkie-icons--checkmark-circled-filled',
+  done: 'dinkie-icons--checkmark-circled-filled',
+  question: 'dinkie-icons--question-face',
+  help: 'dinkie-icons--question-face',
+  faq: 'dinkie-icons--question-face',
+  warning: 'dinkie-icons--alarm-clock-filled',
+  caution: 'dinkie-icons--high-voltage-sign',
+  attention: 'dinkie-icons--high-voltage-sign',
+  failure: 'dinkie-icons--black-cross-square-filled',
+  fail: 'dinkie-icons--black-cross-square-filled',
+  missing: 'dinkie-icons--black-cross-square-filled',
+  danger: 'dinkie-icons--bomb-filled',
+  error: 'dinkie-icons--bomb-filled',
+  bug: 'dinkie-icons--bug',
+  example: 'dinkie-icons--view-list',
+  quote: 'dinkie-icons--speech-balloon-small-filled',
+  cite: 'dinkie-icons--speech-balloon-small-filled',
 }
 
 /**
@@ -52,7 +52,9 @@ function getIconName(type) {
   type = type.toLowerCase()
 
   if (!(type in iconMap)) {
-    console.warn(`No icon mapped for callout type: "${type}", using default icon.`)
+    console.warn(
+      `No icon mapped for callout type: "${type}", using default icon.`,
+    )
   }
 
   return iconMap[type] || iconMap.default
@@ -80,8 +82,7 @@ export default defineConfig({
           icon: callout => ({
             tagName: 'span',
             properties: {
-              'className': 'callout-icon',
-              'data-icon': getIconName(callout.type),
+              className: ['callout-icon', 'iconify', getIconName(callout.type)],
               'data-callout-type': callout.type,
             },
             children: '',
@@ -94,10 +95,13 @@ export default defineConfig({
               ? {
                   tagName: 'span',
                   properties: {
-                    'className': 'callout-fold-icon',
-                    'data-icon': callout.isOpen
-                      ? 'downward-black-triangle'
-                      : 'right-black-triangle',
+                    className: [
+                      'callout-fold-icon',
+                      'iconify',
+                      callout.isOpen
+                        ? 'dinkie-icons--downward-black-triangle'
+                        : 'dinkie-icons--right-black-triangle',
+                    ],
                   },
                   children: '',
                 }

@@ -2,6 +2,10 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+@plugin "@iconify/tailwind4" {
+  prefixes: dinkie-icons;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @import './theme.css';
@@ -11,4 +15,6 @@
 @import './utilities.css';
 @import './callout.css';
 
-[x-cloak] { display: none !important; }
+[x-cloak] {
+  display: none !important;
+}

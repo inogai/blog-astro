@@ -1,89 +1,12 @@
 @reference 'tailwindcss';
 
 @layer components {
-  .callout-icon,
-  .callout-fold-icon {
-    @apply inline-block h-5 w-5 shrink-0;
-    background-color: currentColor;
-    mask-repeat: no-repeat;
-    mask-size: contain;
-    mask-position: center;
-  }
-
   .callout-icon {
     @apply mr-2 mt-0.5;
-
-    &[data-icon='pencil'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/pencil.svg');
-    }
-
-    &[data-icon='informationsource-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/informationsource-filled.svg');
-    }
-
-    &[data-icon='ballot-box-with-check-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/ballot-box-with-check-filled.svg');
-    }
-
-    &[data-icon='clipboard-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/clipboard-filled.svg');
-    }
-
-    &[data-icon='fire'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/fire.svg');
-    }
-
-    &[data-icon='glowing-star'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/glowing-star.svg');
-    }
-
-    &[data-icon='checkmark-circled-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/checkmark-circled-filled.svg');
-    }
-
-    &[data-icon='question-face'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/question-face.svg');
-    }
-
-    &[data-icon='alarm-clock-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/alarm-clock-filled.svg');
-    }
-
-    &[data-icon='high-voltage-sign'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/high-voltage-sign.svg');
-    }
-
-    &[data-icon='black-cross-square-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/black-cross-square-filled.svg');
-    }
-
-    &[data-icon='bomb-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/bomb-filled.svg');
-    }
-
-    &[data-icon='bug'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/bug.svg');
-    }
-
-    &[data-icon='view-list'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/view-list.svg');
-    }
-
-    &[data-icon='speech-balloon-small-filled'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/speech-balloon-small-filled.svg');
-    }
   }
 
   .callout-fold-icon {
     @apply ml-auto h-4 w-4;
-
-    &[data-icon='right-black-triangle'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/right-black-triangle.svg');
-    }
-
-    &[data-icon='downward-black-triangle'] {
-      mask-image: url('https://api.iconify.design/dinkie-icons/downward-black-triangle.svg');
-    }
   }
 
   [data-callout] {
