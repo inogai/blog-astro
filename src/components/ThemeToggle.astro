@@ -13,6 +13,7 @@ import { Kbd } from '@/components/ui/kbd.tsx'
       this.isDark = !this.isDark;
       document.documentElement.classList.toggle('dark', this.isDark);
       localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+      window.dispatchEvent(new CustomEvent('theme-changed'));
     },
     init() {
       window.addEventListener('keydown', (e) => {

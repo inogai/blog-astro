@@ -1,0 +1,51 @@
+---
+
+---
+
+<div
+  id="remark42"
+  x-data="{
+    isDark: localStorage.getItem('theme') === 'dark' ||
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+    get theme() {
+      return this.isDark ? 'dark' : 'light'
+    },
+    init() {
+      const self = this;
+      
+      window.remark_config = {
+        host: 'https://remark42.inogai.com',
+        site_id: 'remark',
+        url: window.location.href,
+        theme: self.theme
+      };
+
+      this.loadRemark42();
+
+      window.addEventListener('theme-changed', function() {
+        self.isDark = localStorage.getItem('theme') === 'dark' ||
+          (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (window.REMARK42 && window.REMARK42.changeTheme) {
+          window.REMARK42.changeTheme(self.theme);
+        }
+      });
+    },
+    loadRemark42() {
+      const components = window.remark_config.components || ['embed'];
+      for (let i = 0; i < components.length; i++) {
+        const script = document.createElement('script');
+        let ext = '.js';
+        const target = document.head || document.body;
+        if ('noModule' in script) {
+          script.type = 'module';
+          ext = '.mjs';
+        } else {
+          script.async = true;
+        }
+        script.defer = true;
+        script.src = `${window.remark_config.host}/web/${components[i]}${ext}`;
+        target.appendChild(script);
+      }
+    }
+  }"
+></div>
