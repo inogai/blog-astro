@@ -10,7 +10,7 @@ interface Props {
 const { prevPost, nextPost } = Astro.props
 ---
 
-<nav class="mt-12 flex justify-between gap-4 border-t pt-8">
+<nav class="flex justify-between gap-4">
   <PostNavigationCard post={prevPost} direction="prev" />
   <PostNavigationCard post={nextPost} direction="next" />
 </nav>

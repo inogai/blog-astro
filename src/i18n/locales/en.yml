@@ -20,6 +20,7 @@ blog:
   nextPost: Next
   noPrevPost: You are at the beginning of the blogs.
   noNextPost: You are at the end of the blogs.
+  discussion: Discussion
 credits:
   title: Credits
   description: This site is built with some of the best open-source tools available. A huge thanks to the creators and maintainers of these projects.

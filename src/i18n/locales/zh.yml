@@ -20,6 +20,7 @@ blog:
   nextPost: 後一篇
   noPrevPost: 已經在最前面啦~
   noNextPost: 已經到最後面啦~
+  discussion: 討論區
 credits:
   title: 致謝
 projects:

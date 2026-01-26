@@ -8,9 +8,10 @@ interface Props {
 const headingClass = cva('', {
   variants: {
     depth: {
-      2: 'ml-0 font-medium',
-      3: 'ml-4 text-xs',
-      4: 'ml-8 text-xs text-foreground/70',
+      1: 'ml-0 text-lg font-bold',
+      2: 'ml-4 font-medium',
+      3: 'ml-8 text-xs',
+      4: 'ml-12 text-xs text-foreground/70',
     },
   },
 })
@@ -22,9 +23,7 @@ export function TableOfContents({ headings }: Props) {
 
   const minDepth = Math.min(...headings.map(h => h.depth))
 
-  const filteredHeadings = headings.filter(
-    h => h.depth >= minDepth && h.depth <= minDepth + 2,
-  )
+  const filteredHeadings = headings.filter(h => h.depth >= 1 && h.depth <= 4)
 
   return (
     <nav className="sticky top-20 max-h-[calc(100vh-5rem)] overflow-y-auto">

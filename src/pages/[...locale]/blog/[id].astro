@@ -21,6 +21,12 @@ i18next.changeLanguage(locale)
 const { post } = Astro.props
 const { Content, headings } = await render(post)
 
+const tocHeadings = [
+  { depth: 1, slug: '', text: post.data.title },
+  ...headings,
+  { depth: 2, slug: 'discussion', text: t('blog.discussion') },
+]
+
 const sortedPosts = (await getCollection('blog')).sort(
   (a, b) =>
     new Date(a.data.created).getTime() - new Date(b.data.created).getTime(),
@@ -60,11 +66,11 @@ const prevPost = postIdx > 0 ? sortedPosts[postIdx - 1] : null
         {t('blog.tableOfContents')}
       </summary>
       <div class="mb-4">
-        <TableOfContents headings={headings} client:load />
+        <TableOfContents headings={tocHeadings} client:load />
       </div>
     </details>
     <aside class="hidden w-64 flex-shrink-0 lg:block">
-      <TableOfContents headings={headings} client:load />
+      <TableOfContents headings={tocHeadings} client:load />
     </aside>
     <article class="min-w-0 flex-1">
       <h1 class="mb-4 text-5xl font-extrabold">{post.data.title}</h1>
@@ -83,7 +89,15 @@ const prevPost = postIdx > 0 ? sortedPosts[postIdx - 1] : null
       <div class="prose max-w-none">
         <Content />
       </div>
+      <hr class="my-8 border-t" />
       <PostNavigation prevPost={prevPost} nextPost={nextPost} />
+      <hr class="my-8 border-t" />
+      <h2 id="discussion" class="mb-2 text-2xl font-bold">
+        {t('blog.discussion')}
+      </h2>
+      <p class="mb-4 text-sm text-muted-foreground">
+        Powered by Remark42.
+      </p>
       <RemarkComments />
     </article>
   </div>
