@@ -1,0 +1,174 @@
+@layer utilities {
+  .callout-info,
+  .callout-todo {
+    & {
+      border-color: var(--callout-blue-border);
+      background-color: var(--callout-blue-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-blue);
+    }
+  }
+
+  .callout-icon-info,
+  .callout-icon-todo {
+    @apply dinkie-icons--informationsource-filled;
+  }
+  .callout-abstract,
+  .callout-summary,
+  .callout-tldr {
+    & {
+      border-color: var(--callout-cyan-border);
+      background-color: var(--callout-cyan-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-cyan);
+    }
+  }
+
+  .callout-icon-abstract,
+  .callout-icon-summary,
+  .callout-icon-tldr {
+    @apply dinkie-icons--clipboard-filled;
+  }
+  .callout-tip,
+  .callout-hint,
+  .callout-important {
+    & {
+      border-color: var(--callout-cyan-border);
+      background-color: var(--callout-cyan-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-cyan);
+    }
+  }
+
+  .callout-icon-tip,
+  .callout-icon-hint,
+  .callout-icon-important {
+    @apply dinkie-icons--fire;
+  }
+  .callout-success,
+  .callout-check,
+  .callout-done {
+    & {
+      border-color: var(--callout-green-border);
+      background-color: var(--callout-green-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-green);
+    }
+  }
+
+  .callout-icon-success,
+  .callout-icon-check,
+  .callout-icon-done {
+    @apply dinkie-icons--checkmark-circled-filled;
+  }
+  .callout-question,
+  .callout-help,
+  .callout-faq {
+    & {
+      border-color: var(--callout-purple-border);
+      background-color: var(--callout-purple-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-purple);
+    }
+  }
+
+  .callout-icon-question,
+  .callout-icon-help,
+  .callout-icon-faq {
+    @apply dinkie-icons--speech-balloon-question;
+  }
+  .callout-warning,
+  .callout-caution,
+  .callout-attention {
+    & {
+      border-color: var(--callout-orange-border);
+      background-color: var(--callout-orange-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-orange);
+    }
+  }
+
+  .callout-icon-warning,
+  .callout-icon-caution,
+  .callout-icon-attention {
+    @apply dinkie-icons--public-address-loudspeaker;
+  }
+  .callout-failure,
+  .callout-fail,
+  .callout-missing,
+  .callout-danger,
+  .callout-error {
+    & {
+      border-color: var(--callout-red-border);
+      background-color: var(--callout-red-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-red);
+    }
+  }
+
+  .callout-icon-failure,
+  .callout-icon-fail,
+  .callout-icon-missing,
+  .callout-icon-danger,
+  .callout-icon-error {
+    @apply dinkie-icons--black-cross-square-filled;
+  }
+  .callout-bug {
+    & {
+      border-color: var(--callout-red-border);
+      background-color: var(--callout-red-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-red);
+    }
+  }
+
+  .callout-icon-bug {
+    @apply dinkie-icons--bug;
+  }
+  .callout-example {
+    & {
+      border-color: var(--callout-purple-border);
+      background-color: var(--callout-purple-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-purple);
+    }
+  }
+
+  .callout-icon-example {
+    @apply dinkie-icons--view-list;
+  }
+  .callout-quote,
+  .callout-cite {
+    & {
+      border-color: var(--callout-gray-border);
+      background-color: var(--callout-gray-bg);
+    }
+
+    [data-callout-title] {
+      color: var(--callout-gray);
+    }
+  }
+
+  .callout-icon-quote,
+  .callout-icon-cite {
+    @apply dinkie-icons--speech-balloon;
+  }
+}

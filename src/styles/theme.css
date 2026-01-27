@@ -58,6 +58,9 @@
   --callout-red: oklch(0.6 0.24 25);
   --callout-red-border: oklch(0.6 0.24 25 / 0.2);
   --callout-red-bg: oklch(0.6 0.24 25 / 0.1);
+  --callout-gray: oklch(0.55 0 0);
+  --callout-gray-border: oklch(0.55 0 0 / 0.2);
+  --callout-gray-bg: oklch(0.55 0 0 / 0.1);
 }
 
 .dark {
@@ -110,6 +113,9 @@
   --callout-red: oklch(0.7 0.22 25);
   --callout-red-border: oklch(0.7 0.22 25 / 0.2);
   --callout-red-bg: oklch(0.7 0.22 25 / 0.08);
+  --callout-gray: oklch(0.7 0 0);
+  --callout-gray-border: oklch(0.7 0 0 / 0.2);
+  --callout-gray-bg: oklch(0.7 0 0 / 0.08);
 }
 
 @theme inline {
@@ -164,6 +170,9 @@
   --color-callout-red: var(--callout-red);
   --color-callout-red-border: var(--callout-red-border);
   --color-callout-red-bg: var(--callout-red-bg);
+  --color-callout-gray: var(--callout-gray);
+  --color-callout-gray-border: var(--callout-gray-border);
+  --color-callout-gray-bg: var(--callout-gray-bg);
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);

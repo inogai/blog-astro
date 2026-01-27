@@ -4,10 +4,8 @@
   "version": "0.0.1",
   "packageManager": "pnpm@10.18.0",
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "node src/styles/callout-types.config.js && astro dev",
+    "build": "node src/styles/callout-types.config.js  && astro build"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.9",

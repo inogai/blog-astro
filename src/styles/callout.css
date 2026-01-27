@@ -1,25 +1,17 @@
 @reference 'tailwindcss';
 
-@layer components {
+@layer utilities {
   .callout-icon {
-    @apply mr-2 mt-0.5;
+    @apply mr-2 mt-0.5 inline-block h-5 w-5 shrink-0 ;
+    @apply dinkie-icons--informationsource-filled;
   }
+}
 
-  .callout-fold-icon {
-    @apply ml-auto h-4 w-4;
-  }
-
-  [data-callout] {
-    & {
-      @apply my-6 space-y-2 rounded-lg border bg-blue-400/20 p-4 pb-5;
-      border-color: var(--callout-blue-border);
-      background-color: var(--callout-blue-bg);
-    }
-
-    &:is(.dark *) {
-      border-color: var(--callout-blue-border);
-      background-color: var(--callout-blue-bg);
-    }
+@layer components {
+  .callout {
+    @apply my-6 space-y-2 rounded-lg border p-4 pb-5;
+    border-color: var(--callout-blue-border);
+    background-color: var(--callout-blue-bg);
 
     & > [data-callout-title] {
       & {
@@ -27,7 +19,7 @@
         color: var(--callout-blue);
       }
 
-      &:not:only-child {
+      &:not(:only-child) {
         @apply mb-2;
       }
 
@@ -37,280 +29,22 @@
     }
 
     & > [data-callout-body] {
-      & {
-        @apply space-y-2;
-      }
+      @apply space-y-2;
     }
   }
 
-  details[data-callout] > summary[data-callout-title] {
-    & {
+  details.callout {
+    & > summary[data-callout-title] {
       @apply cursor-pointer;
     }
-  }
 
-  [data-callout][data-callout-type='info'] {
-    & {
-      border-color: var(--callout-blue-border);
-      background-color: var(--callout-blue-bg);
+    .callout-fold-icon {
+      @apply ml-auto inline-block h-4 w-4 shrink-0;
+      @apply dinkie-icons--right-black-triangle rotate-90;
     }
 
-    & > [data-callout-title] {
-      color: var(--callout-blue);
-
-      &:empty::after {
-        content: 'Info';
-      }
+    &:open .callout-fold-icon {
+      @apply -rotate-90;
     }
-  }
-
-  [data-callout][data-callout-type='todo'] {
-    & {
-      border-color: var(--callout-blue-border);
-      background-color: var(--callout-blue-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-blue);
-
-      &:empty::after {
-        content: 'ToDo';
-      }
-    }
-  }
-
-  [data-callout][data-callout-type='abstract'],
-  [data-callout][data-callout-type='summary'],
-  [data-callout][data-callout-type='tldr'] {
-    & {
-      border-color: var(--callout-cyan-border);
-      background-color: var(--callout-cyan-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-cyan);
-    }
-  }
-
-  [data-callout][data-callout-type='abstract']
-    > [data-callout-title]:empty::after {
-    content: 'Abstract';
-  }
-
-  [data-callout][data-callout-type='summary']
-    > [data-callout-title]:empty::after {
-    content: 'Summary';
-  }
-
-  [data-callout][data-callout-type='tldr'] > [data-callout-title]:empty::after {
-    content: 'TL;DR';
-  }
-
-  [data-callout][data-callout-type='tip'],
-  [data-callout][data-callout-type='hint'],
-  [data-callout][data-callout-type='important'] {
-    & {
-      border-color: var(--callout-cyan-border);
-      background-color: var(--callout-cyan-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-cyan);
-    }
-  }
-
-  [data-callout][data-callout-type='tip'] > [data-callout-title]:empty::after {
-    content: 'Tip';
-  }
-
-  [data-callout][data-callout-type='hint'] > [data-callout-title]:empty::after {
-    content: 'Hint';
-  }
-
-  [data-callout][data-callout-type='important']
-    > [data-callout-title]:empty::after {
-    content: 'Important';
-  }
-
-  [data-callout][data-callout-type='success'],
-  [data-callout][data-callout-type='check'],
-  [data-callout][data-callout-type='done'] {
-    & {
-      border-color: var(--callout-green-border);
-      background-color: var(--callout-green-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-green);
-    }
-  }
-
-  [data-callout][data-callout-type='success']
-    > [data-callout-title]:empty::after {
-    content: 'Success';
-  }
-
-  [data-callout][data-callout-type='check']
-    > [data-callout-title]:empty::after {
-    content: 'Check';
-  }
-
-  [data-callout][data-callout-type='done'] > [data-callout-title]:empty::after {
-    content: 'Done';
-  }
-
-  [data-callout][data-callout-type='question'],
-  [data-callout][data-callout-type='help'],
-  [data-callout][data-callout-type='faq'] {
-    & {
-      border-color: var(--callout-orange-border);
-      background-color: var(--callout-orange-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-orange);
-    }
-  }
-
-  [data-callout][data-callout-type='question']
-    > [data-callout-title]:empty::after {
-    content: 'Question';
-  }
-
-  [data-callout][data-callout-type='help'] > [data-callout-title]:empty::after {
-    content: 'Help';
-  }
-
-  [data-callout][data-callout-type='faq'] > [data-callout-title]:empty::after {
-    content: 'FAQ';
-  }
-
-  [data-callout][data-callout-type='warning'],
-  [data-callout][data-callout-type='caution'],
-  [data-callout][data-callout-type='attention'] {
-    & {
-      border-color: var(--callout-orange-border);
-      background-color: var(--callout-orange-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-orange);
-    }
-  }
-
-  [data-callout][data-callout-type='warning']
-    > [data-callout-title]:empty::after {
-    content: 'Warning';
-  }
-
-  [data-callout][data-callout-type='caution']
-    > [data-callout-title]:empty::after {
-    content: 'Caution';
-  }
-
-  [data-callout][data-callout-type='attention']
-    > [data-callout-title]:empty::after {
-    content: 'Attention';
-  }
-
-  [data-callout][data-callout-type='failure'],
-  [data-callout][data-callout-type='fail'],
-  [data-callout][data-callout-type='missing'] {
-    & {
-      border-color: var(--callout-red-border);
-      background-color: var(--callout-red-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-red);
-    }
-  }
-
-  [data-callout][data-callout-type='failure']
-    > [data-callout-title]:empty::after {
-    content: 'Failure';
-  }
-
-  [data-callout][data-callout-type='fail'] > [data-callout-title]:empty::after {
-    content: 'Fail';
-  }
-
-  [data-callout][data-callout-type='missing']
-    > [data-callout-title]:empty::after {
-    content: 'Missing';
-  }
-
-  [data-callout][data-callout-type='danger'],
-  [data-callout][data-callout-type='error'] {
-    & {
-      border-color: var(--callout-red-border);
-      background-color: var(--callout-red-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-red);
-    }
-  }
-
-  [data-callout][data-callout-type='danger']
-    > [data-callout-title]:empty::after {
-    content: 'Danger';
-  }
-
-  [data-callout][data-callout-type='error']
-    > [data-callout-title]:empty::after {
-    content: 'Error';
-  }
-
-  [data-callout][data-callout-type='bug'] {
-    & {
-      border-color: var(--callout-red-border);
-      background-color: var(--callout-red-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-red);
-    }
-  }
-
-  [data-callout][data-callout-type='bug'] > [data-callout-title]:empty::after {
-    content: 'Bug';
-  }
-
-  [data-callout][data-callout-type='example'] {
-    & {
-      border-color: var(--callout-purple-border);
-      background-color: var(--callout-purple-bg);
-    }
-
-    & > [data-callout-title] {
-      color: var(--callout-purple);
-    }
-  }
-
-  [data-callout][data-callout-type='example']
-    > [data-callout-title]:empty::after {
-    content: 'Example';
-  }
-
-  [data-callout][data-callout-type='quote'],
-  [data-callout][data-callout-type='cite'] {
-    & {
-      border-color: var(--muted);
-      background-color: var(--muted);
-    }
-
-    & > [data-callout-title] {
-      color: var(--muted-foreground);
-    }
-  }
-
-  [data-callout][data-callout-type='quote']
-    > [data-callout-title]:empty::after {
-    content: 'Quote';
-  }
-
-  [data-callout][data-callout-type='cite'] > [data-callout-title]:empty::after {
-    content: 'Cite';
   }
 }

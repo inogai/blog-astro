@@ -14,6 +14,7 @@
 @import './prose.css';
 @import './utilities.css';
 @import './callout.css';
+@import './callout-types.css';
 
 [x-cloak] {
   display: none !important;
