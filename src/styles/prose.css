@@ -56,6 +56,10 @@
       @apply my-6 ml-6 list-disc [&>li]:mt-2;
     }
 
+    ol {
+      @apply my-6 ml-6 list-decimal [&>li]:mt-2;
+    }
+
     /* Block Code: Expressive Code */
     div.expressive-code {
       @apply font-mono [&:not(:first-child)]:mt-6;
