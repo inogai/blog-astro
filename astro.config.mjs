@@ -69,8 +69,9 @@ export default defineConfig({
         remarkWikiLink,
         {
           aliasDivider: '|',
+          // Expects <domain>/[locale]/blog/[slug]/ instead of .../[slug]
           /** @type { (permalink: string) => string } */
-          hrefTemplate: permalink => `./${permalink.slice(7)}`,
+          hrefTemplate: permalink => `../${permalink.slice(7)}`,
         },
       ],
     ],
