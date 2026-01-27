@@ -8,6 +8,10 @@ SSG/SSR-oriented meta-framework. Allows mixing multiple frameworks.
 
 Good old React, because why not?
 
+### [Alpine.js](https://alpinejs.dev/)
+
+Lightweight JavaScript framework for interactivity.
+
 ## UI Design
 
 ### [shadcn/ui](https://ui.shadcn.com/)
@@ -22,15 +26,21 @@ Like this paper-ish colorscheme? Me too.
 
 ### [Fontsource](https://fontsource.org/)
 
-Another way to deliver fonts with your app.
+Self-hosting Google Fonts and other open source fonts.
 
-<!-- ### [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono) -->
-<!---->
-<!-- Monospace font. Very cool. Also checkout Lilex. -->
+### [IBM Plex Mono](https://fonts.google.com/specimen/IBM+Plex+Mono)
+
+Monospace font for code blocks.
 
 ### [GNU Unifont](https://unifoundry.com/unifont/index.html)
 
 Bitmap font. Wide coverage of Unicode characters.
+
+## Services
+
+### [Remark42](https://remark42.com/)
+
+Lightweight self-hosted comment system.
 
 ## Icons
 
@@ -66,7 +76,7 @@ Super cool integration with markdown. Out of the box.
 
 Markdown processor for the blog.
 
-### [remark-callout](https://github.com/landakram/remark-wiki-link)
+### [remark-callout](https://github.com/r4ai/remark-callout)
 
 Adds callout support to markdown.
 
