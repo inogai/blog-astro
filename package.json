@@ -11,6 +11,7 @@
     "@astrojs/alpinejs": "^0.4.9",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.0",
     "@expressive-code/plugin-line-numbers": "^0.41.6",
     "@fontsource/ibm-plex-mono": "^5.2.7",
     "@fontsource/unifont": "^5.2.5",

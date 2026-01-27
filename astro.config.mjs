@@ -1,6 +1,7 @@
 // @ts-check
 import alpine from '@astrojs/alpinejs'
 import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
 import { pluginLineNumbers as ecPluginLineNumbers } from '@expressive-code/plugin-line-numbers'
 import remarkCallout from '@r4ai/remark-callout'
 import tailwindcss from '@tailwindcss/vite'
@@ -11,6 +12,9 @@ import remarkGfm from 'remark-gfm'
 import remarkWikiLink from 'remark-wiki-link'
 import remarkCjkWrap from './src/lib/remarkCjkWrap'
 
+/**
+ * @param {string} type
+ */
 function cleanCalloutType(type) {
   return type.toLowerCase().replace(';', '')
 }
@@ -87,5 +91,7 @@ export default defineConfig({
     react(),
     alpine(),
     icon(),
+    sitemap(),
   ],
 })
+
