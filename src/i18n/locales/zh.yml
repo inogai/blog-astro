@@ -2,6 +2,9 @@ nav:
   home: 首頁
   blog: 部落格
   projects: 項目
+  tools: 工具
+  jsonEscape: JSON 跳脫 / 反跳脫
+  time: 當前時間
   credits: 致謝
   language: English
   toggleTheme: 切換主題
@@ -48,3 +51,53 @@ breadcrumb:
   home: 首頁
 title:
   suffix: ' | inogai'
+tools:
+  title: 開發者工具
+  subtitle: 小巧、快速、在瀏覽器內執行的工具。資料不會離開你的機器。
+  nojs: 這些工具完全在客戶端執行。
+  backToList: 返回工具列表
+  copy: 複製
+  copied: 已複製！
+  clear: 清空
+  swap: 交換
+  jsonEscape:
+    name: JSON 跳脫 / 反跳脫
+    description: 將字串跳脫或反跳脫，以便安全嵌入 JSON。
+    escape: 跳脫
+    unescape: 反跳脫
+    input: 輸入
+    output: 輸出
+    inputPlaceholder: 在此貼上任意文字…
+    escapedPlaceholder: 跳脫後的結果在此顯示…
+    unescapedPlaceholder: 反跳脫後的結果在此顯示…
+    errorInvalidJson: 輸入不是有效的 JSON。
+    direction: 方向
+    bothDirections: 跳脫 → 反跳脫 → 跳脫 皆支援。
+    example: 範例
+    modeHint: '跳脫：原始文字 → JSON 安全字串。反跳脫：JSON 字串 → 原始文字。'
+  time:
+    name: 當前時間
+    description: 以多種格式顯示當前時間，並提供可複製的模板字串。
+    autoRefresh: 每秒更新。
+    now: 現在
+    format: 格式
+    refresh: 重新整理
+    pause: 暫停
+    resume: 繼續
+    copyTemplate: 複製模板
+    timezone: 時區
+    formats:
+      filename: 檔名安全（僅數字）
+      iso: ISO 8601 (UTC)
+      isoLocal: ISO 8601 (本地)
+      rfc3339: RFC 3339
+      rfc2822: RFC 2822
+      unix: Unix 秒
+      unixMs: Unix 毫秒
+      date: 僅日期
+      time: 僅時間
+      datetime: 日期與時間
+      locale: 本地字串
+      custom: 自訂
+    customPlaceholder: 例如 YYYY-MM-DD_HH-mm-ss
+    templateHint: '模板字串（字面值）：可直接複製貼上到編輯器。'

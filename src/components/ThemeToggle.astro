@@ -17,7 +17,7 @@ import { Kbd } from '@/components/ui/kbd.tsx'
     },
     init() {
       window.addEventListener('keydown', (e) => {
-        if (e.key === '6') {
+        if (e.key === '7') {
           this.toggle();
         }
       });
@@ -42,5 +42,5 @@ import { Kbd } from '@/components/ui/kbd.tsx'
     <Icon name="mdi:moon-waning-crescent" class="size-4" />
   </template>
   <span class="hidden md:inline" x-text="isDark ? 'Light' : 'Dark'"></span>
-  <Kbd className="hidden md:inline-flex">6</Kbd>
+  <Kbd className="hidden md:inline-flex">7</Kbd>
 </button>

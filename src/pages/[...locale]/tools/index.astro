@@ -1,0 +1,85 @@
+---
+import { Icon } from 'astro-icon/components'
+import Link from '@/components/Link.astro'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
+import { H1, Lead } from '@/components/ui/typography'
+import { i18next, t } from '@/i18n/ui'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths, locales } from '@/lib/i18n-utils'
+
+export async function getStaticPaths() {
+  return getI18nStaticPaths()
+}
+
+const locale = Astro.params.locale ?? 'en'
+i18next.changeLanguage(locale)
+
+const tools = [
+  {
+    slug: 'json-escape',
+    name: t('tools.jsonEscape.name'),
+    description: t('tools.jsonEscape.description'),
+    icon: 'mdi:code-json',
+  },
+  {
+    slug: 'time',
+    name: t('tools.time.name'),
+    description: t('tools.time.description'),
+    icon: 'mdi:clock-outline',
+  },
+] as const
+
+// Used to hint search engines about every (locale, tool) combination.
+const allToolSlugs = tools.map((tool) => tool.slug)
+---
+
+<BaseLayout title={t('tools.title')}>
+  <H1>{t('tools.title')}</H1>
+  <Lead className="mt-6">{t('tools.subtitle')}</Lead>
+
+  <div
+    class={`
+      mt-6 grid gap-4
+      md:grid-cols-2
+      lg:grid-cols-3
+    `}
+  >
+    {
+      tools.map((tool) => (
+        <Link
+          href={`/${locale}/tools/${tool.slug}/`}
+          class="transition-shadow hover:shadow-lg"
+        >
+          <Card className="h-full">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Icon name={tool.icon} class="size-5" />
+                {tool.name}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription>{tool.description}</CardDescription>
+            </CardContent>
+          </Card>
+        </Link>
+      ))
+    }
+  </div>
+
+  <p class="mt-6 text-sm text-muted-foreground">{t('tools.nojs')}</p>
+
+  {
+    /* Static hreflang list for discoverability across locales. */
+    locales.flatMap((l) =>
+      allToolSlugs.map((slug) => (
+        <link rel="alternate" hreflang={l} href={`/${l}/tools/${slug}/`} />
+      )),
+    )
+  }
+</BaseLayout>

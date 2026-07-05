@@ -1,0 +1,73 @@
+---
+import TimeTool from '@/components/tools/TimeTool.tsx'
+import { H1, Lead } from '@/components/ui/typography'
+import { i18next, t } from '@/i18n/ui'
+import BaseLayout from '@/layouts/BaseLayout.astro'
+import { getI18nStaticPaths } from '@/lib/i18n-utils'
+
+export async function getStaticPaths() {
+  return getI18nStaticPaths()
+}
+
+const locale = Astro.params.locale ?? 'en'
+i18next.changeLanguage(locale)
+
+const labels = {
+  now: t('tools.time.now'),
+  format: t('tools.time.format'),
+  refresh: t('tools.time.refresh'),
+  pause: t('tools.time.pause'),
+  resume: t('tools.time.resume'),
+  copy: t('tools.copy'),
+  copied: t('tools.copied'),
+  copyTemplate: t('tools.time.copyTemplate'),
+  timezone: t('tools.time.timezone'),
+  autoRefresh: t('tools.time.autoRefresh'),
+  templateHint: t('tools.time.templateHint'),
+  formats: {
+    filename: t('tools.time.formats.filename'),
+    iso: t('tools.time.formats.iso'),
+    isoLocal: t('tools.time.formats.isoLocal'),
+    rfc3339: t('tools.time.formats.rfc3339'),
+    rfc2822: t('tools.time.formats.rfc2822'),
+    unix: t('tools.time.formats.unix'),
+    unixMs: t('tools.time.formats.unixMs'),
+    date: t('tools.time.formats.date'),
+    time: t('tools.time.formats.time'),
+    datetime: t('tools.time.formats.datetime'),
+    locale: t('tools.time.formats.locale'),
+  },
+}
+---
+
+<BaseLayout
+  title={t('tools.time.name')}
+  breadcrumb={{
+    overrides: [
+      {
+        href: `/${locale}/tools/`,
+        label: t('nav.tools'),
+      },
+      {
+        href: `/${locale}/tools/time/`,
+        label: t('nav.time'),
+      },
+    ],
+  }}
+>
+  <H1>{t('tools.time.name')}</H1>
+  <Lead className="mt-6">{t('tools.time.description')}</Lead>
+
+  <div class="mt-8">
+    <TimeTool labels={labels} client:load />
+  </div>
+
+  <p class="mt-6">
+    <a
+      href={`/${locale}/tools/`}
+      class="text-sm text-muted-foreground underline-offset-2 hover:underline"
+    >
+      ← {t('tools.backToList')}
+    </a>
+  </p>
+</BaseLayout>

@@ -52,9 +52,17 @@ const isActive = (href: string) => href === currentPath
           </NavigationMenuLink>
 
           <NavigationMenuLink
+            href={`/${locale}/tools/`}
+            active={isActive(`/${locale}/tools/`)}
+            key="4"
+          >
+            {t('nav.tools')}
+          </NavigationMenuLink>
+
+          <NavigationMenuLink
             href={`/${locale}/credits/`}
             active={isActive(`/${locale}/credits/`)}
-            key="4"
+            key="5"
           >
             {t('nav.credits')}
           </NavigationMenuLink>
@@ -62,7 +70,7 @@ const isActive = (href: string) => href === currentPath
           <NavigationMenuLink
             href={`/${nextLocale}/`}
             active={isActive(`/${nextLocale}/`)}
-            key="5"
+            key="6"
           >
             <Icon name={nextLocaleIcon} />
             {t('nav.language')}

@@ -2,6 +2,9 @@ nav:
   home: Home
   blog: Blog
   projects: Projects
+  tools: Tools
+  jsonEscape: JSON Escape / Unescape
+  time: Current Time
   credits: Credits
   language: 繁體中文
   toggleTheme: Toggle theme
@@ -47,3 +50,53 @@ navbar:
   closeModal: Close modal
 title:
   suffix: ' | inogai'
+tools:
+  title: Developer Tools
+  subtitle: Small, fast, in-browser utilities. No data leaves your machine.
+  nojs: These tools run entirely client-side.
+  backToList: Back to tools
+  copy: Copy
+  copied: Copied!
+  clear: Clear
+  swap: Swap
+  jsonEscape:
+    name: JSON Escape / Unescape
+    description: Escape or unescape strings for safe embedding inside JSON.
+    escape: Escape
+    unescape: Unescape
+    input: Input
+    output: Output
+    inputPlaceholder: Paste any text here…
+    escapedPlaceholder: Escaped output appears here…
+    unescapedPlaceholder: Unescaped output appears here…
+    errorInvalidJson: Input is not valid JSON.
+    direction: Direction
+    bothDirections: Escape → Unescape → Escape are both supported.
+    example: Example
+    modeHint: 'Escape: raw text → JSON-safe string. Unescape: JSON string → raw text.'
+  time:
+    name: Current Time
+    description: Show the current time in several formats, with copyable templates.
+    autoRefresh: Updates every second.
+    now: Now
+    format: Format
+    refresh: Refresh
+    pause: Pause
+    resume: Resume
+    copyTemplate: Copy template
+    timezone: Timezone
+    formats:
+      filename: Filename-safe (digits only)
+      iso: ISO 8601 (UTC)
+      isoLocal: ISO 8601 (local)
+      rfc3339: RFC 3339
+      rfc2822: RFC 2822
+      unix: Unix seconds
+      unixMs: Unix milliseconds
+      date: Date only
+      time: Time only
+      datetime: Date and time
+      locale: Locale string
+      custom: Custom
+    customPlaceholder: e.g. YYYY-MM-DD_HH-mm-ss
+    templateHint: 'Template string (literal): copy and paste into your editor.'
